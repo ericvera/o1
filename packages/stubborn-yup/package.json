@@ -1,7 +1,7 @@
 {
   "name": "stubborn-yup",
-  "version": "0.0.1",
-  "description": "Simplified and opinionated crypto library (wraps the Web Crypto API)",
+  "version": "0.0.2",
+  "description": "Opinionated data validation (with yup)",
   "main": "index.js",
   "module": "index.js",
   "repository": "https://github.com/ericvera/stubborn-yup.git",
@@ -9,6 +9,9 @@
   "license": "MIT",
   "scripts": {
     "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "prettier": {
     "semi": false,
