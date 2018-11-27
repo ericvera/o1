@@ -1,0 +1,29 @@
+{
+  "name": "firebase-auth-web",
+  "version": "0.0.1",
+  "description": "Lightweight helper for Firebase Auth Web ",
+  "main": "index.js",
+  "repository": "https://github.com/ericvera/firebase-auth-web.git",
+  "author": "Eric Vera <hey@itsmeeric.com>",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "keywords": [
+    "firebase",
+    "authentication",
+    "web",
+    "react"
+  ],
+  "peerDependencies": {
+    "firebase": "^5.5.9"
+  },
+  "devDependencies": {
+    "@firebase/app-types": "^0.3.2"
+  }
+}
