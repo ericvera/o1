@@ -1,6 +1,6 @@
 {
   "name": "firebase-auth-web",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Lightweight helper for Firebase Auth Web ",
   "main": "index.js",
   "repository": "https://github.com/ericvera/firebase-auth-web.git",
