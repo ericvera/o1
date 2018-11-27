@@ -1,4 +1,4 @@
-import auth from './auth'
+import { auth } from './auth'
 
 export const sendSignInEmail = async (email, signInPath) => {
   const { location } = window

@@ -1,4 +1,4 @@
-import auth from './auth'
+import { auth } from './auth'
 
 export const signInWithEmailLink = async email => {
   await auth.signInWithEmailLink(email)

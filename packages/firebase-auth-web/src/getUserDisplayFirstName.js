@@ -1,6 +1,6 @@
-import auth from './auth'
+import { auth } from './auth'
 
-export const getUserDisplayName = async () => {
+export const getUserDisplayFirstName = async () => {
   const displayName = await auth.currentUser.displayName
 
   if (displayName) {

@@ -1,3 +1,3 @@
-import auth from './auth'
+import { auth } from './auth'
 
 export const signOut = async () => auth.signOut()
