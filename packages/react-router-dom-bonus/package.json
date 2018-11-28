@@ -1,8 +1,9 @@
 {
   "name": "react-router-dom-bonus",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A few extra Routes to extend react-router-dom",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
   "repository": "https://github.com/ericvera/react-router-dom-bonus.git",
   "author": "Eric Vera <hey@itsmeeric.com>",
   "license": "MIT",
