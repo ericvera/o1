@@ -9,9 +9,12 @@ export const signInWithEmailLink = async email => {
 export const SignInWithEmailLinkErrorCodes = {
   // User Input
   // - Thrown if the email address is not valid.
-  InvalidEmail: 'auth/invalid-email', // - Thrown if OTP in email link expires.
-  ExpiredActionCode: 'auth/expired-action-code', // Code/System Problems
+  InvalidEmail: 'auth/invalid-email',
+  // - Thrown if OTP in email link expires.
+  ExpiredActionCode: 'auth/expired-action-code',
+  // Code/System Problems
   // - Thrown if the user corresponding to the given email has been disabled.
-  UserDisabled: 'auth/user-disabled', // - This can happen if the code is malformed, expired, or has already been used.
+  UserDisabled: 'auth/user-disabled',
+  // - This can happen if the code is malformed, expired, or has already been used.
   InvalidActionCode: 'auth/invalid-action-code'
 }

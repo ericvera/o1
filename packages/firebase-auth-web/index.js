@@ -1,4 +1,4 @@
-import { auth } from './src/auth'
+import { auth, AuthErrors } from './src/auth'
 import { getLastSignInAttemptEmail } from './src/getLastSignInAttemptEmail'
 import { getUserDisplayName } from './src/getUserDisplayName'
 import { getUserDisplayFirstName } from './src/getUserDisplayFirstName'
@@ -18,6 +18,7 @@ import { updateEmail, UpdateEmailErrorCodes } from './src/updateEmail'
 
 export {
   auth,
+  AuthErrors,
   getLastSignInAttemptEmail,
   getUserDisplayName,
   getUserDisplayFirstName,
