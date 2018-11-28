@@ -1,0 +1,35 @@
+{
+  "name": "react-router-dom-bonus",
+  "version": "0.0.1",
+  "description": "A few extra Routes to extend react-router-dom",
+  "main": "index.js",
+  "repository": "https://github.com/ericvera/react-router-dom-bonus.git",
+  "author": "Eric Vera <hey@itsmeeric.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "babel src --out-dir lib",
+    "prepublish": "yarn build"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "keywords": [
+    "react-router",
+    "react-router-dom",
+    "react"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-react": "^7.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.6.3",
+    "react-router-dom": "^4.3.1"
+  }
+}
