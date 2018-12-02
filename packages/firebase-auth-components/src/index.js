@@ -1,5 +1,5 @@
-import SignedInForm from './SignedInForm'
+import SignedInForm, { SignedInFormStates } from './SignedInForm'
 import SignInForm from './SignInForm'
 import SignInWaitForm from './SignInWaitForm'
 
-export { SignedInForm, SignInForm, SignInWaitForm }
+export { SignedInForm, SignedInFormStates, SignInForm, SignInWaitForm }
