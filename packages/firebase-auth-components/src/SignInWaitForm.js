@@ -37,13 +37,17 @@ class SignInWaitForm extends React.Component {
     super(props)
 
     this.resendButton = React.createRef()
+
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.closeResentSnackbar = this.closeResentSnackbar.bind(this)
+    this.renderResentSnackbar = this.renderResentSnackbar.bind(this)
+
+    this.state = {
+      resentSnackbarOpen: false
+    }
   }
 
-  state = {
-    resentSnackbarOpen: false
-  }
-
-  componentWillMount = () => {
+  componentWillMount() {
     // This form should only be used when sign-in form has been used and no sign-in
     // The onNoEmail callback allows the consumer of this component to redirect to the sign-in page.
     const email = getLastSignInAttemptEmail()
@@ -55,7 +59,7 @@ class SignInWaitForm extends React.Component {
     }
   }
 
-  handleSubmit = async (values, setErrors, setSubmitting, signedInPath) => {
+  async handleSubmit(values, setErrors, setSubmitting, signedInPath) {
     let errorMessage = null
 
     // Send the sign-in email
@@ -92,7 +96,7 @@ class SignInWaitForm extends React.Component {
     })
   }
 
-  closeResentSnackbar = (_, reason) => {
+  closeResentSnackbar(_, reason) {
     if (reason === 'clickaway') {
       return
     }
@@ -100,7 +104,7 @@ class SignInWaitForm extends React.Component {
     this.setState({ resentSnackbarOpen: false })
   }
 
-  renderResentSnackbar = () => {
+  renderResentSnackbar() {
     const email = getLastSignInAttemptEmail()
     const { resentSnackbarOpen } = this.state
 

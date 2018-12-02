@@ -53,18 +53,36 @@ export const SignedInFormStates = {
 }
 
 class SignedInForm extends React.Component {
-  state = {
-    state: SignedInFormStates.ValidatingLink,
-    email: getLastSignInAttemptEmail() || '',
-    errors: {}
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      state: SignedInFormStates.ValidatingLink,
+      email: getLastSignInAttemptEmail() || '',
+      errors: {}
+    }
+
+    this.setNewState = this.setNewState.bind(this)
+    this.validateLink = this.validateLink.bind(this)
+    this.validateEmail = this.validateEmail.bind(this)
+    this.confirmSignIn = this.confirmSignIn.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.clearErrors = this.clearErrors.bind(this)
+    this.renderEmailForm = this.renderEmailForm.bind(this)
   }
 
-  componentWillMount = async () => {
+  async componentWillMount() {
     // Start the state machine
     await this.setNewState(this.state.state)
   }
 
-  setNewState = async newState => {
+  async componentDidUpdate(_, prevState) {
+    if (this.state.state !== prevState.state) {
+      this.setNewState(this.state.state)
+    }
+  }
+
+  async setNewState(newState) {
     switch (newState) {
       case SignedInFormStates.ValidatingLink:
         await this.validateLink()
@@ -81,7 +99,7 @@ class SignedInForm extends React.Component {
     }
   }
 
-  validateLink = async () => {
+  async validateLink() {
     if (await isSignInWithEmailLink()) {
       this.setState({ state: SignedInFormStates.ValidatingEmail })
     } else {
@@ -89,7 +107,7 @@ class SignedInForm extends React.Component {
     }
   }
 
-  validateEmail = () => {
+  validateEmail() {
     if (this.state.email) {
       this.setState({ state: SignedInFormStates.ConfirmingSignIn })
     } else {
@@ -97,7 +115,7 @@ class SignedInForm extends React.Component {
     }
   }
 
-  confirmSignIn = async () => {
+  async confirmSignIn() {
     const { email } = this.state
 
     try {
@@ -149,7 +167,7 @@ class SignedInForm extends React.Component {
     }
   }
 
-  handleSubmit = (values, setErrors, setSubmitting) => {
+  handleSubmit(values, setErrors, setSubmitting) {
     this.setErrors = setErrors
     this.setSubmitting = setSubmitting
 
@@ -159,17 +177,11 @@ class SignedInForm extends React.Component {
     })
   }
 
-  componentDidUpdate = async (_, prevState) => {
-    if (this.state.state !== prevState.state) {
-      this.setNewState(this.state.state)
-    }
-  }
-
-  clearErrors = () => {
+  clearErrors() {
     this.setState({ errors: {} })
   }
 
-  renderEmailForm = () => {
+  renderEmailForm() {
     const { classes } = this.props
 
     return (
