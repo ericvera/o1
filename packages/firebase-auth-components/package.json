@@ -1,6 +1,6 @@
 {
   "name": "firebase-auth-components",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A few components to simplify Firebase auth on top of material-ui",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -37,6 +37,6 @@
     "material-ui-bonus": "^0.0.14",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "stubborn-yup": "^0.0.8"
+    "stubborn-yup": "^0.0.9"
   }
 }
