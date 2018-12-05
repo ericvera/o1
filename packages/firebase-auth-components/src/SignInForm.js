@@ -77,16 +77,32 @@ const handleSubmit = async (
   }
 }
 
-const SignInForm = ({ classes, signedInPath, onSignIn }) => (
+const SignInForm = ({
+  classes,
+  signedInPath,
+  onSignIn,
+  emailFieldProps,
+  buttonProps,
+  buttonContainerProps,
+  allowDomain
+}) => (
   <Formik
     initialValues={{
       email: ''
     }}
     validationSchema={schema}
     onSubmit={(values, { setErrors, setSubmitting }) => {
-      Promise.resolve(
-        handleSubmit(values, setErrors, setSubmitting, signedInPath, onSignIn)
-      )
+      if (
+        allowDomain &&
+        values.email &&
+        !values.email.endsWith(`@${allowDomain}`)
+      ) {
+        setErrors({ global: 'Go away' })
+      } else {
+        Promise.resolve(
+          handleSubmit(values, setErrors, setSubmitting, signedInPath, onSignIn)
+        )
+      }
     }}
   >
     {props => {
@@ -115,12 +131,20 @@ const SignInForm = ({ classes, signedInPath, onSignIn }) => (
             disabled={isSubmitting}
             error={Boolean(errors.email && touched.email)}
             helperText={errors.email && touched.email ? errors.email : null}
+            {...emailFieldProps}
           />
           {errors.global && (
             <FormHelperText error={true}>*{errors.global}</FormHelperText>
           )}
-          <div className={classes.submitButtomContainer}>
-            <ProgressButton showProgress={isSubmitting} type="submit">
+          <div
+            className={classes.submitButtomContainer}
+            {...buttonContainerProps}
+          >
+            <ProgressButton
+              showProgress={isSubmitting}
+              type="submit"
+              {...buttonProps}
+            >
               Send me a sign-in email
             </ProgressButton>
           </div>
