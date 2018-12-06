@@ -98,11 +98,13 @@ const SignInForm = ({
         !values.email.endsWith(`@${allowDomain}`)
       ) {
         setErrors({ global: 'Go away' })
-      } else {
-        Promise.resolve(
-          handleSubmit(values, setErrors, setSubmitting, signedInPath, onSignIn)
-        )
+        setSubmitting(false)
+        return
       }
+
+      Promise.resolve(
+        handleSubmit(values, setErrors, setSubmitting, signedInPath, onSignIn)
+      )
     }}
   >
     {props => {
@@ -134,7 +136,7 @@ const SignInForm = ({
             {...emailFieldProps}
           />
           {errors.global && (
-            <FormHelperText error={true}>*{errors.global}</FormHelperText>
+            <FormHelperText error={true}>{errors.global}</FormHelperText>
           )}
           <div
             className={classes.submitButtomContainer}
