@@ -5,6 +5,7 @@ import { getUserDisplayFirstName } from './src/getUserDisplayFirstName'
 import { getUserEmail } from './src/getUserEmail'
 import { getUserId } from './src/getUserId'
 import { isSignInWithEmailLink } from './src/isSignInWithEmailLink'
+import { reload } from './src/reload'
 import {
   sendSignInEmail,
   SendSignInEmailErrorCodes
@@ -25,6 +26,7 @@ export {
   getUserEmail,
   getUserId,
   isSignInWithEmailLink,
+  reload,
   sendSignInEmail,
   signInWithEmailLink,
   signOut,
