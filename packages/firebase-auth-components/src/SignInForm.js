@@ -35,12 +35,38 @@ const handleSubmit = async (
   values,
   setErrors,
   setSubmitting,
+  setValues,
   signedInPath,
-  onSignIn
+  onSignIn,
+  allowDomain
 ) => {
+  let sanitizedValues = null
+
+  try {
+    // NOTE: This takes case of returning sanitized values (trimmed, toUpper, etc.)
+    sanitizedValues = await schema.validate(values)
+    // Update the form to the values submitted
+    setValues(sanitizedValues)
+  } catch (errors) {
+    // NOTE: This should never happen. handleSubmit should not run if validation fails
+    setErrors(errors)
+    setSubmitting(false)
+    return
+  }
+
+  if (
+    allowDomain &&
+    sanitizedValues.email &&
+    !sanitizedValues.email.endsWith(`@${allowDomain}`)
+  ) {
+    setErrors({ global: 'Go away' })
+    setSubmitting(false)
+    return
+  }
+
   // Send the sign-in email
   try {
-    await sendSignInEmail(values.email, signedInPath)
+    await sendSignInEmail(sanitizedValues.email, signedInPath)
 
     if (onSignIn) {
       onSignIn()
@@ -91,19 +117,17 @@ const SignInForm = ({
       email: ''
     }}
     validationSchema={schema}
-    onSubmit={(values, { setErrors, setSubmitting }) => {
-      if (
-        allowDomain &&
-        values.email &&
-        !values.email.endsWith(`@${allowDomain}`)
-      ) {
-        setErrors({ global: 'Go away' })
-        setSubmitting(false)
-        return
-      }
-
+    onSubmit={(values, { setErrors, setSubmitting, setValues }) => {
       Promise.resolve(
-        handleSubmit(values, setErrors, setSubmitting, signedInPath, onSignIn)
+        handleSubmit(
+          values,
+          setErrors,
+          setSubmitting,
+          setValues,
+          signedInPath,
+          onSignIn,
+          allowDomain
+        )
       )
     }}
   >

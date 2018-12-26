@@ -167,12 +167,23 @@ class SignedInForm extends React.Component {
     }
   }
 
-  handleSubmit(values, setErrors, setSubmitting) {
-    this.setErrors = setErrors
-    this.setSubmitting = setSubmitting
+  async handleSubmit(values, setErrors, setSubmitting, setValues) {
+    let sanitizedValues = null
+
+    try {
+      // NOTE: This takes case of returning sanitized values (trimmed, toUpper, etc.)
+      sanitizedValues = await schema.validate(values)
+      // Update the form to the values submitted
+      setValues(sanitizedValues)
+    } catch (errors) {
+      // NOTE: This should never happen. handleSubmit should not run if validation fails
+      setErrors(errors)
+      setSubmitting(false)
+      return
+    }
 
     this.setState({
-      email: values.email,
+      email: sanitizedValues.email,
       state: SignedInFormStates.ConfirmingSignIn
     })
   }
@@ -190,8 +201,10 @@ class SignedInForm extends React.Component {
           email: this.state.email
         }}
         validationSchema={schema}
-        onSubmit={(values, { setErrors, setSubmitting }) => {
-          Promise.resolve(this.handleSubmit(values, setErrors, setSubmitting))
+        onSubmit={(values, { setErrors, setSubmitting, setValues }) => {
+          Promise.resolve(
+            this.handleSubmit(values, setErrors, setSubmitting, setValues)
+          )
         }}
       >
         {props => {

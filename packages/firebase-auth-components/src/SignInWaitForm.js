@@ -59,12 +59,32 @@ class SignInWaitForm extends React.Component {
     }
   }
 
-  async handleSubmit(values, setErrors, setSubmitting, signedInPath) {
+  async handleSubmit(
+    values,
+    setErrors,
+    setSubmitting,
+    setValues,
+    signedInPath
+  ) {
+    let sanitizedValues = null
+
+    try {
+      // NOTE: This takes case of returning sanitized values (trimmed, toUpper, etc.)
+      sanitizedValues = await schema.validate(values)
+      // Update the form to the values submitted
+      setValues(sanitizedValues)
+    } catch (errors) {
+      // NOTE: This should never happen. handleSubmit should not run if validation fails
+      setErrors(errors)
+      setSubmitting(false)
+      return
+    }
+
     let errorMessage = null
 
     // Send the sign-in email
     try {
-      await sendSignInEmail(values.email, signedInPath)
+      await sendSignInEmail(sanitizedValues.email, signedInPath)
     } catch (error) {
       switch (error.code) {
         case SendSignInEmailErrorCodes.InvalidEmail:
@@ -127,9 +147,15 @@ class SignInWaitForm extends React.Component {
           email: getLastSignInAttemptEmail()
         }}
         validationSchema={schema}
-        onSubmit={(values, { setErrors, setSubmitting }) => {
+        onSubmit={(values, { setErrors, setSubmitting, setValues }) => {
           Promise.resolve(
-            this.handleSubmit(values, setErrors, setSubmitting, signedInPath)
+            this.handleSubmit(
+              values,
+              setErrors,
+              setSubmitting,
+              setValues,
+              signedInPath
+            )
           )
         }}
       >
