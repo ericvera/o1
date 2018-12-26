@@ -133,6 +133,7 @@ const SignInForm = ({
   >
     {props => {
       const {
+        dirty,
         values,
         touched,
         errors,
@@ -167,6 +168,7 @@ const SignInForm = ({
             {...buttonContainerProps}
           >
             <ProgressButton
+              disabled={!dirty}
               showProgress={isSubmitting}
               type="submit"
               {...buttonProps}

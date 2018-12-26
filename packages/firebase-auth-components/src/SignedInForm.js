@@ -209,6 +209,7 @@ class SignedInForm extends React.Component {
       >
         {props => {
           const {
+            dirty,
             values,
             touched,
             errors,
@@ -251,7 +252,11 @@ class SignedInForm extends React.Component {
                 </FormHelperText>
               )}
               <div className={classes.submitButtomContainer}>
-                <ProgressButton showProgress={isSubmitting} type="submit">
+                <ProgressButton
+                  disabled={!dirty}
+                  showProgress={isSubmitting}
+                  type="submit"
+                >
                   Confirm email
                 </ProgressButton>
               </div>

@@ -160,7 +160,7 @@ class SignInWaitForm extends React.Component {
         }}
       >
         {props => {
-          const { errors, isSubmitting, handleSubmit } = props
+          const { dirty, errors, isSubmitting, handleSubmit } = props
 
           return (
             <React.Fragment>
@@ -170,6 +170,7 @@ class SignInWaitForm extends React.Component {
                 )}
                 <div className={classes.submitButtomContainer}>
                   <ProgressButton
+                    disabled={!dirty}
                     innerRef={this.resendButton}
                     delay={60}
                     showProgress={isSubmitting}
