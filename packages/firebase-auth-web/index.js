@@ -2,6 +2,7 @@ import { auth, AuthErrors } from './src/auth'
 import { getLastSignInAttemptEmail } from './src/getLastSignInAttemptEmail'
 import { getUserDisplayName } from './src/getUserDisplayName'
 import { getUserDisplayFirstName } from './src/getUserDisplayFirstName'
+import { getUserDisplayLastName } from './src/getUserDisplayLastName'
 import { getUserEmail } from './src/getUserEmail'
 import { getUserId } from './src/getUserId'
 import { isSignInWithEmailLink } from './src/isSignInWithEmailLink'
@@ -23,6 +24,7 @@ export {
   getLastSignInAttemptEmail,
   getUserDisplayName,
   getUserDisplayFirstName,
+  getUserDisplayLastName,
   getUserEmail,
   getUserId,
   isSignInWithEmailLink,
