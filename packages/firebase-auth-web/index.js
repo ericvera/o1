@@ -16,6 +16,7 @@ import {
   SignInWithEmailLinkErrorCodes
 } from './src/signInWithEmailLink'
 import { signOut } from './src/signOut'
+import { updateDisplayName } from './src/updateDisplayName'
 import { updateEmail, UpdateEmailErrorCodes } from './src/updateEmail'
 
 export {
@@ -32,6 +33,7 @@ export {
   sendSignInEmail,
   signInWithEmailLink,
   signOut,
+  updateDisplayName,
   updateEmail,
   SendSignInEmailErrorCodes,
   SignInWithEmailLinkErrorCodes,
