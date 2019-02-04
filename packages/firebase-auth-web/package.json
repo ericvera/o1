@@ -1,6 +1,6 @@
 {
   "name": "firebase-auth-web",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "description": "Lightweight helper for Firebase Auth Web ",
   "main": "index.js",
   "repository": "https://github.com/ericvera/firebase-auth-web.git",
@@ -21,9 +21,9 @@
     "react"
   ],
   "peerDependencies": {
-    "firebase": "^5.8.0"
+    "firebase": "^5.8.2"
   },
   "devDependencies": {
-    "@firebase/app-types": "^0.3.2"
+    "@firebase/app-types": "^0.3.3"
   }
 }
