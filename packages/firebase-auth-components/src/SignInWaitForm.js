@@ -25,8 +25,9 @@ export const SignInWaitFormStates = {
 const SignInWaitForm = ({ children, allowDomain, signedInPath }) => {
   const emailFormRef = useRef()
 
-  const [email, setEmail] = useState('')
   const [state, setState] = useState(SignInWaitFormStates.ValidatingEmail)
+  const [error, setError] = useState()
+  const [email, setEmail] = useState('')
 
   const validateEmail = () => {
     const savedEmail = getLastSignInAttemptEmail()

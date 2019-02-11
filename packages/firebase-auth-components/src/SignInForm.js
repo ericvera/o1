@@ -23,6 +23,8 @@ export const SignInFormStates = {
 }
 
 const SignInForm = ({ allowDomain, signedInPath }) => {
+  const [state, setState] = useState(SignInFormStates.NeedEmail)
+  const [error, setError] = useState()
   const [email, setEmail] = useState('')
 
   const sendEmail = async () => {
