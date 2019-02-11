@@ -1,5 +1,5 @@
 // Platform
-import React, { useImperativeHandle } from 'react'
+import React, { forwardRef, useImperativeHandle } from 'react'
 // Materia-UI
 import FormHelperText from '@material-ui/core/FormHelperText'
 import TextField from '@material-ui/core/TextField'
@@ -139,4 +139,4 @@ const EmailForm = (
   )
 }
 
-export default React.forwardRef(EmailForm)
+export default forwardRef(EmailForm)
