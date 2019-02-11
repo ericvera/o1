@@ -1,5 +1,5 @@
 // Platform
-import React, { useRef, useImperativeHandle, forwardRef } from 'react'
+import React, { useImperativeHandle } from 'react'
 // Materia-UI
 import FormHelperText from '@material-ui/core/FormHelperText'
 import TextField from '@material-ui/core/TextField'
@@ -37,7 +37,7 @@ const EmailForm = (
   ref
 ) => {
   const classes = useStyles()
-  const buttonRef = useRef()
+  const buttonRef = React.createRef()
 
   useImperativeHandle(ref, () => ({
     resetDelay: buttonRef.current.resetDelay()
@@ -139,4 +139,4 @@ const EmailForm = (
   )
 }
 
-export default forwardRef(EmailForm)
+export default React.forwardRef(EmailForm)
