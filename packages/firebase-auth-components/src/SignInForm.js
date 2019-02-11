@@ -1,5 +1,5 @@
 // Platform
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 // Services
 import { sendSignInEmail } from 'firebase-auth-web'
 // Components
