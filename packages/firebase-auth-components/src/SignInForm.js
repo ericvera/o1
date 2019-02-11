@@ -2,7 +2,9 @@
 import React from 'react'
 // Services
 import { sendSignInEmail } from 'firebase-auth-web'
+// Components
 import EmailForm from './EmailForm'
+// Helpers
 import getErrorMessage from './getErrorMessage'
 
 /* 

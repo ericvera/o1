@@ -2,6 +2,8 @@
 import React, { useEffect } from 'react'
 // Services
 import { getLastSignInAttemptEmail, sendSignInEmail } from 'firebase-auth-web'
+// Components
+import EmailForm from './EmailForm'
 // Helpers
 import getErrorMessage from './getErrorMessage'
 
