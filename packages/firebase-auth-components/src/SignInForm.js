@@ -1,185 +1,74 @@
 // Platform
 import React from 'react'
-// Materia-UI
-import FormHelperText from '@material-ui/core/FormHelperText'
-import TextField from '@material-ui/core/TextField'
-import { withStyles } from '@material-ui/core/styles'
-// Material-UI-Bonus
-import { ProgressButton } from 'material-ui-bonus'
-// Libs
-import { buildSchema, yupEmail } from 'stubborn-yup'
-import { Formik } from 'formik'
 // Services
-import {
-  AuthErrors,
-  sendSignInEmail,
-  SendSignInEmailErrorCodes
-} from 'firebase-auth-web'
+import { sendSignInEmail } from 'firebase-auth-web'
+import EmailForm from './EmailForm'
+import getErrorMessage from './getErrorMessage'
 
-const styles = theme => ({
-  submitButtomContainer: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit,
-    textAlign: 'right'
-  }
-})
-
-const schema = buildSchema(
-  {
-    email: yupEmail({ required: true })
-  },
-  { noUnknown: true }
-)
-
-const handleSubmit = async (
-  values,
-  setErrors,
-  setSubmitting,
-  setValues,
-  signedInPath,
-  onSignIn,
-  allowDomain
-) => {
-  let sanitizedValues = null
-
-  try {
-    // NOTE: This takes case of returning sanitized values (trimmed, toUpper, etc.)
-    sanitizedValues = await schema.validate(values)
-    // Update the form to the values submitted
-    setValues(sanitizedValues)
-  } catch (errors) {
-    // NOTE: This should never happen. handleSubmit should not run if validation fails
-    setErrors(errors)
-    setSubmitting(false)
-    return
-  }
-
-  if (
-    allowDomain &&
-    sanitizedValues.email &&
-    !sanitizedValues.email.endsWith(`@${allowDomain}`)
-  ) {
-    setErrors({ global: 'Go away' })
-    setSubmitting(false)
-    return
-  }
-
-  // Send the sign-in email
-  try {
-    await sendSignInEmail(sanitizedValues.email, signedInPath)
-
-    if (onSignIn) {
-      onSignIn()
-    }
-  } catch (error) {
-    let errorMessage = ''
-
-    switch (error.code) {
-      case SendSignInEmailErrorCodes.InvalidEmail:
-        errorMessage =
-          'There seems to be something wrong with your email. Please double check it and try again.'
-        break
-      case AuthErrors.NetworkRequestFailed:
-        errorMessage =
-          'It seems there is a problem with the internet connection. Please make sure your internet connection is working and try again.'
-        break
-      case AuthErrors.TooManyRequests:
-        errorMessage =
-          'It seems we are experiencing more traffic than usual. Please try again in a minute or two.'
-        break
-      default:
-        errorMessage =
-          'This is an unexpected error. Please copy this and send it to our support mail: ' +
-          (error.code || error.message)
-        break
-    }
-
-    setSubmitting(false)
-
-    setErrors({
-      global: errorMessage
-    })
-    return
-  }
+/* 
+ States:
+ - need-email: if (in a different device) => show email form and on submit go to 'confirming'
+ - sending-sign-in-email: does what it says
+ - retryable-error: error ocurred when confirming sign-in. User should retry.
+ - sign-in-email-sent: consumer should navigate to a page that uses the SignInWaitForm
+*/
+export const SignInFormStates = {
+  NeedEmail: 'need-email',
+  SendingSignInEmail: 'sending-sign-in-email',
+  RetryableError: 'retryable-error',
+  SignInEmailSent: 'sign-in-email-sent'
+  // NOTE: There is no state for confirmed because the Firbase auth state listener will detect it.
 }
 
-const SignInForm = ({
-  classes,
-  signedInPath,
-  onSignIn,
-  emailFieldProps,
-  buttonProps,
-  buttonContainerProps,
-  allowDomain
-}) => (
-  <Formik
-    initialValues={{
-      email: ''
-    }}
-    validationSchema={schema}
-    onSubmit={(values, { setErrors, setSubmitting, setValues }) => {
-      Promise.resolve(
-        handleSubmit(
-          values,
-          setErrors,
-          setSubmitting,
-          setValues,
-          signedInPath,
-          onSignIn,
-          allowDomain
-        )
-      )
-    }}
-  >
-    {props => {
-      const {
-        dirty,
-        values,
-        touched,
-        errors,
-        isSubmitting,
-        handleChange,
-        handleBlur,
-        handleSubmit
-      } = props
+const SignInForm = ({ allowDomain, signedInPath }) => {
+  const [email, setEmail] = useState('')
 
-      return (
-        <form onSubmit={handleSubmit}>
-          <TextField
-            id="email"
-            autoFocus={true}
-            fullWidth
-            label="EMAIL"
-            placeholder="coolhuman@gmail.com"
-            type="email"
-            value={values.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            disabled={isSubmitting}
-            error={Boolean(errors.email && touched.email)}
-            helperText={errors.email && touched.email ? errors.email : null}
-            {...emailFieldProps}
-          />
-          {errors.global && (
-            <FormHelperText error={true}>{errors.global}</FormHelperText>
-          )}
-          <div
-            className={classes.submitButtomContainer}
-            {...buttonContainerProps}
-          >
-            <ProgressButton
-              disabled={!dirty}
-              showProgress={isSubmitting}
-              type="submit"
-              {...buttonProps}
-            >
-              Send me a sign-in email
-            </ProgressButton>
-          </div>
-        </form>
-      )
-    }}
-  </Formik>
-)
+  const sendEmail = async () => {
+    try {
+      await sendSignInEmail(email, signedInPath)
 
-export default withStyles(styles, { withTheme: true })(SignInForm)
+      setState(SignInFormStates.SignInEmailSent)
+    } catch (error) {
+      const errorMessagge = getErrorMessage(error)
+
+      setError(errorMessagge)
+      setState(SignedInFormStates.RetryableError)
+    }
+  }
+
+  const nextState = async () => {
+    switch (state) {
+      case SignInFormStates.SendingSignInEmail:
+        await sendEmail()
+        break
+      default:
+        // Other states should be end states
+        break
+    }
+  }
+
+  const emailSubmitted = email => {
+    setEmail(email)
+    setState(SignInFormStates.SendingSignInEmail)
+  }
+
+  const renderEmailForm = () => {
+    return (
+      <EmailForm
+        onSubmit={emailSubmitted}
+        submitButtonText="Send me a sign-in email"
+        allowDomain={allowDomain}
+      />
+    )
+  }
+
+  useEffect(() => {
+    nextState()
+  }, [state])
+
+  return (
+    <React.Fragment>{children(state, error, renderEmailForm)}</React.Fragment>
+  )
+}
+
+export default SignInForm

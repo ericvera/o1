@@ -27,16 +27,17 @@
     "components"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.2.0",
-    "@babel/core": "^7.2.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
     "@babel/preset-react": "^7.0.0"
   },
   "peerDependencies": {
-    "@material-ui/core": "^3.6.1",
-    "formik": "^1.3.2",
-    "material-ui-bonus": "^0.0.14",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/styles": "^3.0.0-alpha.10",
+    "formik": "^1.5.0",
+    "material-ui-bonus": "^0.1.1",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
     "stubborn-yup": "^0.0.9"
   }
 }

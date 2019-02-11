@@ -1,192 +1,100 @@
 // Platform
-import React from 'react'
-// Materia-UI
-import FormHelperText from '@material-ui/core/FormHelperText'
-import Snackbar from '@material-ui/core/Snackbar'
-import { withStyles } from '@material-ui/core/styles'
-// Material-UI-Bonus
-import { ProgressButton } from 'material-ui-bonus'
-// Libs
-import { buildSchema, yupEmail } from 'stubborn-yup'
-import { Formik } from 'formik'
+import React, { useEffect } from 'react'
 // Services
-import {
-  AuthErrors,
-  getLastSignInAttemptEmail,
-  sendSignInEmail,
-  SendSignInEmailErrorCodes
-} from 'firebase-auth-web'
+import { getLastSignInAttemptEmail, sendSignInEmail } from 'firebase-auth-web'
+// Helpers
+import getErrorMessage from './getErrorMessage'
 
-const styles = theme => ({
-  submitButtomContainer: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit,
-    textAlign: 'right'
-  }
-})
+/* 
+ States:
+ - validating-email: make sure that there is an email
+ - no-email: this is an invalid state as the user should not get here  without an email
+ - waiting-for-sign-in-email: this will show a countdown
+ - retryable-error: error ocurred when confirming sign-in. User should retry.
+*/
+export const SignInWaitFormStates = {
+  ValidatingEmail: 'validating-email',
+  NoEmail: 'no-email',
+  WaitingForSignInEmail: 'waiting-for-sign-in-email',
+  SendingSignInEmail: 'sending-sign-in-email',
+  RetryableError: 'retryable-error'
+}
 
-const schema = buildSchema(
-  {
-    email: yupEmail({ required: true })
-  },
-  { noUnknown: true }
-)
+const SignInWaitForm = ({ children, allowDomain, signedInPath }) => {
+  const emailFormRef = useRef()
 
-class SignInWaitForm extends React.Component {
-  constructor(props) {
-    super(props)
+  const [email, setEmail] = useState('')
+  const [state, setState] = useState(SignInWaitFormStates.ValidatingEmail)
 
-    this.resendButton = React.createRef()
+  const validateEmail = () => {
+    const savedEmail = getLastSignInAttemptEmail()
+    setEmail(savedEmail)
 
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.closeResentSnackbar = this.closeResentSnackbar.bind(this)
-    this.renderResentSnackbar = this.renderResentSnackbar.bind(this)
-
-    this.state = {
-      resentSnackbarOpen: false
+    if (savedEmail) {
+      setState(SignInWaitFormStates.WaitingForSignInEmail)
+    } else {
+      setState(SignInWaitFormStates.NoEmail)
     }
   }
 
-  componentWillMount() {
-    // This form should only be used when sign-in form has been used and no sign-in
-    // The onNoEmail callback allows the consumer of this component to redirect to the sign-in page.
-    const email = getLastSignInAttemptEmail()
-    if (!email) {
-      const { onNoEmail } = this.props
-      if (onNoEmail) {
-        onNoEmail()
-      }
-    }
+  const waitForSignInMail = () => {
+    emailForm.current.resetDelay()
   }
 
-  async handleSubmit(
-    values,
-    setErrors,
-    setSubmitting,
-    setValues,
-    signedInPath
-  ) {
-    let sanitizedValues = null
-
+  const resendSignInMail = async () => {
     try {
-      // NOTE: This takes case of returning sanitized values (trimmed, toUpper, etc.)
-      sanitizedValues = await schema.validate(values)
-      // Update the form to the values submitted
-      setValues(sanitizedValues)
-    } catch (errors) {
-      // NOTE: This should never happen. handleSubmit should not run if validation fails
-      setErrors(errors)
-      setSubmitting(false)
-      return
-    }
+      await sendSignInEmail(email, signedInPath)
 
-    let errorMessage = null
-
-    // Send the sign-in email
-    try {
-      await sendSignInEmail(sanitizedValues.email, signedInPath)
+      setState(SignInWaitFormStates.WaitingForSignInEmail)
     } catch (error) {
-      switch (error.code) {
-        case SendSignInEmailErrorCodes.InvalidEmail:
-          errorMessage =
-            'There seems to be something wrong with your email. Please double check it and try again.'
-          break
-        case AuthErrors.NetworkRequestFailed:
-          errorMessage =
-            'It seems there is a problem with the internet connection. Please make sure your internet connection is working and try again.'
-          break
-        case AuthErrors.TooManyRequests:
-          errorMessage =
-            'It seems we are experiencing more traffic than usual. Please try again in a minute or two.'
-          break
-        default:
-          errorMessage =
-            'This is an unexpected error. Please copy this and send it to our support mail: ' +
-            (error.code || error.message)
-          break
-      }
+      const errorMessagge = getErrorMessage(error)
+
+      setError(errorMessagge)
+      setState(SignedInFormStates.RetryableError)
     }
-
-    this.resendButton.current.resetDelay()
-
-    setSubmitting(false)
-
-    setErrors({
-      global: errorMessage
-    })
   }
 
-  closeResentSnackbar(_, reason) {
-    if (reason === 'clickaway') {
-      return
+  const nextState = async () => {
+    switch (state) {
+      case SignInWaitForm.ValidatingEmail:
+        validateEmail()
+        break
+      case SignInWaitForm.WaitingForSignInEmail:
+        waitForSignInMail()
+        break
+      case SignInWaitForm.SendingSignInEmail:
+        await resendSignInMail()
+        break
+      default:
+        // Other states should be end states
+        break
     }
-
-    this.setState({ resentSnackbarOpen: false })
   }
 
-  renderResentSnackbar() {
-    const email = getLastSignInAttemptEmail()
-    const { resentSnackbarOpen } = this.state
+  const emailSubmitted = () => {
+    setState(SignInWaitFormStates.SendingSignInEmail)
+  }
 
+  const renderResendForm = () => {
     return (
-      <Snackbar
-        open={resentSnackbarOpen}
-        autoHideDuration={6000}
-        onClose={this.closeResentSnackbar}
-        message={<span>A new sign-in email is on its way to {email}.</span>}
+      <EmailForm
+        ref={emailFormRef}
+        onSubmit={emailSubmitted}
+        email={email}
+        submitButtonText="Send again"
+        hideEmailInput={true}
+        allowDomain={allowDomain}
       />
     )
   }
 
-  render() {
-    const { classes, signedInPath } = this.props
+  useEffect(() => {
+    nextState()
+  }, [state])
 
-    return (
-      <Formik
-        initialValues={{
-          email: getLastSignInAttemptEmail()
-        }}
-        validationSchema={schema}
-        onSubmit={(values, { setErrors, setSubmitting, setValues }) => {
-          Promise.resolve(
-            this.handleSubmit(
-              values,
-              setErrors,
-              setSubmitting,
-              setValues,
-              signedInPath
-            )
-          )
-        }}
-      >
-        {props => {
-          const { dirty, errors, isSubmitting, handleSubmit } = props
-
-          return (
-            <React.Fragment>
-              <form onSubmit={handleSubmit}>
-                {errors.global && (
-                  <FormHelperText error={true}>*{errors.global}</FormHelperText>
-                )}
-                <div className={classes.submitButtomContainer}>
-                  <ProgressButton
-                    disabled={!dirty}
-                    innerRef={this.resendButton}
-                    delay={60}
-                    showProgress={isSubmitting}
-                    type="submit"
-                  >
-                    Send again
-                  </ProgressButton>
-                </div>
-              </form>
-              {this.renderResentSnackbar()}
-            </React.Fragment>
-          )
-        }}
-      </Formik>
-    )
-  }
+  return (
+    <React.Fragment>{children(state, error, renderResendForm)}</React.Fragment>
+  )
 }
 
-export default withStyles(styles, { withTheme: true })(SignInWaitForm)
+export default SignInWaitForm
