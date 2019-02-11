@@ -22,7 +22,7 @@ export const SignInFormStates = {
   // NOTE: There is no state for confirmed because the Firbase auth state listener will detect it.
 }
 
-const SignInForm = ({ allowDomain, signedInPath }) => {
+const SignInForm = ({ children, allowDomain, signedInPath }) => {
   const [state, setState] = useState(SignInFormStates.NeedEmail)
   const [error, setError] = useState()
   const [email, setEmail] = useState('')

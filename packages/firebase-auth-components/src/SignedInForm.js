@@ -33,7 +33,7 @@ export const SignedInFormStates = {
   // NOTE: There is no state for confirmed because the Firbase auth state listener will detect it.
 }
 
-const SignedInForm = ({ children }) => {
+const SignedInForm = ({ children, allowDomain }) => {
   const [state, setState] = useState(SignedInFormStates.ValidatingLink)
   const [error, setError] = useState()
   const [email, setEmail] = useState(getLastSignInAttemptEmail() || '')
@@ -104,6 +104,7 @@ const SignedInForm = ({ children }) => {
         onSubmit={emailSubmitted}
         email={email}
         submitButtonText="Confirm email"
+        allowDomain={allowDomain}
       />
     )
   }
