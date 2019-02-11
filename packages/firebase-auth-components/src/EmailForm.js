@@ -106,7 +106,9 @@ const EmailForm = (
                 autoFocus={true}
                 fullWidth
                 label="EMAIL"
-                placeholder="coolhuman@gmail.com"
+                placeholder={
+                  allowDomain ? `human@${allowDomain}` : 'coolhuman@gmail.com'
+                }
                 type="email"
                 value={values.email}
                 onChange={handleChange}
