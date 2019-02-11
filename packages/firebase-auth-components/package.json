@@ -1,6 +1,6 @@
 {
   "name": "firebase-auth-components",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A few components to simplify Firebase auth on top of material-ui",
   "main": "lib/index.js",
   "module": "lib/index.js",
