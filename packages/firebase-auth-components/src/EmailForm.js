@@ -123,7 +123,7 @@ const EmailForm = (
             )}
             <div className={classes.submitButtomContainer}>
               <ProgressButton
-                disabled={!dirty}
+                disabled={!hideEmailInput && !dirty}
                 showProgress={isSubmitting}
                 type="submit"
                 delay={delay}
