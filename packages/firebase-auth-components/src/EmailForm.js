@@ -40,7 +40,7 @@ const EmailForm = (
   const buttonRef = React.createRef()
 
   useImperativeHandle(ref, () => ({
-    resetDelay: buttonRef.current.resetDelay()
+    resetDelay: buttonRef.current.resetDelay
   }))
 
   const handleSubmit = async (values, setErrors, setSubmitting, setValues) => {

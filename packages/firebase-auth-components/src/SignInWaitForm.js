@@ -81,6 +81,7 @@ const SignInWaitForm = ({ children, allowDomain, signedInPath }) => {
   const renderResendForm = () => {
     return (
       <EmailForm
+        delay={60}
         ref={emailFormRef}
         onSubmit={emailSubmitted}
         email={email}
