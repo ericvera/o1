@@ -41,7 +41,7 @@ const SignInWaitForm = ({ children, allowDomain, signedInPath }) => {
   }
 
   const waitForSignInMail = () => {
-    emailForm.current.resetDelay()
+    emailFormRef.current.resetDelay()
   }
 
   const resendSignInMail = async () => {
@@ -59,13 +59,13 @@ const SignInWaitForm = ({ children, allowDomain, signedInPath }) => {
 
   const nextState = async () => {
     switch (state) {
-      case SignInWaitForm.ValidatingEmail:
+      case SignInWaitFormStates.ValidatingEmail:
         validateEmail()
         break
-      case SignInWaitForm.WaitingForSignInEmail:
+      case SignInWaitFormStates.WaitingForSignInEmail:
         waitForSignInMail()
         break
-      case SignInWaitForm.SendingSignInEmail:
+      case SignInWaitFormStates.SendingSignInEmail:
         await resendSignInMail()
         break
       default:
