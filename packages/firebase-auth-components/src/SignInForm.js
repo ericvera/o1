@@ -36,7 +36,7 @@ const SignInForm = ({ children, allowDomain, signedInPath }) => {
       const errorMessagge = getErrorMessage(error)
 
       setError(errorMessagge)
-      setState(SignedInFormStates.RetryableError)
+      setState(SignInFormStates.RetryableError)
     }
   }
 
