@@ -46,7 +46,7 @@ module.exports = (fieldName, options) => {
 
   yupCurrency = yupCurrency.transform(value => {
     if (!value) {
-      return value
+      return
     }
 
     // NOTE: InvalidCurrency will never get to the consumer of

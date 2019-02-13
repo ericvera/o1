@@ -21,7 +21,7 @@ module.exports = (options = { required: true }) => {
 
   yupPhone = yupPhone.transform(value => {
     if (!value) {
-      return value
+      return
     }
 
     // NOTE: InvalidPhone will never get to the consumer of
