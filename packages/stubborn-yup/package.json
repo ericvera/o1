@@ -22,15 +22,16 @@
     "validation"
   ],
   "dependencies": {
-    "phone": "^2.3.0",
-    "yup": "^0.26.6"
+    "currency.js": "^1.2.1",
+    "phone": "^2.3.5",
+    "yup": "^0.26.10"
   },
   "devDependencies": {
-    "@types/jest": "^23.3.9",
+    "@types/jest": "^24.0.3",
     "babel-core": "^6.26.3",
-    "babel-jest": "^23.6.0",
-    "jest": "^23.6.0",
-    "webpack": "^4.26.1",
-    "webpack-cli": "^3.1.2"
+    "babel-jest": "^24.1.0",
+    "jest": "^24.1.0",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
   }
 }

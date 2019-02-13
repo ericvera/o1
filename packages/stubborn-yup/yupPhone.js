@@ -1,5 +1,7 @@
+const getE164Phone = require('./helpers/getE164Phone')
 const yup = require('yup')
-const isPhone = require('./isPhone')
+
+const InvalidPhone = 'invalid-phone'
 
 module.exports = (options = { required: true }) => {
   let yupPhone = yup
@@ -14,8 +16,19 @@ module.exports = (options = { required: true }) => {
   yupPhone = yupPhone.test(
     'phone',
     'It looks like there is something wrong with the phone number',
-    value => !value || isPhone(value) // !value makes this optional (required is checked above)
+    value => value !== InvalidPhone
   )
+
+  yupPhone = yupPhone.transform(value => {
+    if (!value) {
+      return value
+    }
+
+    // NOTE: InvalidPhone will never get to the consumer of
+    //  this funtion. The consumer will receive a rejected
+    //  Promise cause by .test(...)
+    return getE164Phone(value) || InvalidPhone
+  })
 
   return yupPhone
 }

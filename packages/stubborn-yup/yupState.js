@@ -9,7 +9,7 @@ module.exports = (options = { required: true }) => {
 
   yupState = yupState
     .uppercase()
-    .max(2, 'Your state must be two characters long')
+    .min(2, 'Your state must be two characters long')
     .max(2, 'Your state must be two characters long')
 
   return yupState

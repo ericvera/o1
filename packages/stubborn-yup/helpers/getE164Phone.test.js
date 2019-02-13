@@ -1,4 +1,4 @@
-const { getE164Phone } = require('../index')
+const getE164Phone = require('./getE164Phone')
 
 describe('getE164Phone', () => {
   test('works with E164 phone', () => {

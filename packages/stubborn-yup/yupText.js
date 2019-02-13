@@ -1,6 +1,10 @@
 const yup = require('yup')
 
 module.exports = (fieldName, options = { required: true, maxLength: 100 }) => {
+  if (typeof fieldName !== 'string') {
+    throw 'fieldName is required'
+  }
+
   let yupText = yup.string().trim()
 
   if (options.required) {
