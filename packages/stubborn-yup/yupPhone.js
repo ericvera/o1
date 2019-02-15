@@ -1,15 +1,21 @@
+const defaultOptions = require('./helpers/defaultOptions')
 const getE164Phone = require('./helpers/getE164Phone')
 const yup = require('yup')
 
 const InvalidPhone = 'invalid-phone'
 
-module.exports = (options = { required: true }) => {
+/**
+ * @param {YupTextOptions} [options]
+ */
+module.exports = options => {
+  const localOptions = Object.assign({}, defaultOptions, options)
+
   let yupPhone = yup
     .string()
     .trim()
     .max(50, 'Your phone is too long (max. 50 characters)')
 
-  if (options.required) {
+  if (localOptions.required) {
     yupPhone = yupPhone.required('Your phone is required')
   }
 

@@ -1,9 +1,15 @@
+const defaultOptions = require('./helpers/defaultOptions')
 const yup = require('yup')
 
-module.exports = (options = { required: true }) => {
+/**
+ * @param {YupTextOptions} [options]
+ */
+module.exports = options => {
+  const localOptions = Object.assign({}, defaultOptions, options)
+
   let yupCity = yup.string().trim()
 
-  if (options.required) {
+  if (localOptions.required) {
     yupCity = yupCity.required('Your city name is required')
   }
 

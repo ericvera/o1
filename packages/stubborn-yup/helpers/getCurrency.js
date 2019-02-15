@@ -1,5 +1,8 @@
 const currency = require('currency.js')
 
+/**
+ * @param {string} value
+ */
 module.exports = value => {
   try {
     const currencyVal = currency(value, { errorOnInvalid: true })

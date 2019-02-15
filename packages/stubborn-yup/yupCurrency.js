@@ -2,16 +2,22 @@ const currency = require('currency.js')
 const getCurrencyString = require('./helpers/getCurrency')
 const yup = require('yup')
 
-const InvalidCurrency = 'invalid-currency'
+/**
+ * @typedef {Object} YupCurrencyOptions
+ * @property {boolean} [required=true] The field is required
+ * @property {string} [min] Minumum value of the provided currency
+ * @property {number} [maxLength=20] Maximum length in characters
+ */
+const yupCurrencyDefaults = { required: true, maxLength: 20, min: undefined }
 
-const defaults = { required: true, maxLength: 20, min: undefined }
+const InvalidCurrency = 'invalid-currency'
 
 module.exports = (fieldName, options) => {
   if (typeof fieldName !== 'string') {
     throw 'fieldName is required'
   }
 
-  const localOptions = Object.assign({}, defaults, options)
+  const localOptions = Object.assign({}, yupCurrencyDefaults, options)
 
   let yupCurrency = yup.string().trim()
 
