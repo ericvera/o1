@@ -1,6 +1,6 @@
 {
   "name": "stubborn-yup",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Opinionated data validation (with yup)",
   "main": "index.js",
   "module": "index.js",
