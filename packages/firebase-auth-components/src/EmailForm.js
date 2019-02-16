@@ -43,14 +43,15 @@ const EmailForm = (
     resetDelay: buttonRef.current.resetDelay
   }))
 
-  const handleSubmit = async (values, setErrors, setSubmitting, setValues) => {
+  const internalHandleSubmit = (
+    values,
+    { setErrors, setSubmitting, setValues }
+  ) => {
     let sanitizedValues = null
 
     try {
       // NOTE: This takes case of returning sanitized values (trimmed, toUpper, etc.)
-      sanitizedValues = await schema.validate(values)
-      // Update the form to the values submitted
-      setValues(sanitizedValues)
+      sanitizedValues = schema.validateSync(values)
     } catch (errors) {
       // NOTE: This should never happen. handleSubmit should not run if validation fails
       setErrors({ global: errors.message || errors })
@@ -64,13 +65,15 @@ const EmailForm = (
       !sanitizedValues.email.endsWith(`@${allowDomain}`)
     ) {
       setErrors({
-        global:
-          'Your domain is not currently allowed on this site. If you think this is a problem please contact us.'
+        global: 'Your email domain is not allowed on this site.'
       })
       setSubmitting(false)
       return
     }
 
+    // NOTE: setValues triggers validation which will clear errors so only call this if there are
+    //  no errors
+    setValues(sanitizedValues)
     onSubmit(sanitizedValues.email)
   }
 
@@ -80,11 +83,7 @@ const EmailForm = (
         email
       }}
       validationSchema={schema}
-      onSubmit={(values, { setErrors, setSubmitting, setValues }) => {
-        Promise.resolve(
-          handleSubmit(values, setErrors, setSubmitting, setValues)
-        )
-      }}
+      onSubmit={internalHandleSubmit}
     >
       {props => {
         const {
