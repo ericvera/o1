@@ -1,4 +1,8 @@
 import { auth, AuthErrors } from './src/auth'
+import {
+  fetchSignInMethodsForEmail,
+  FetchSignInMethodsForEmailErrorCodes
+} from './src/fetchSignInMethodsForEmail'
 import { getLastSignInAttemptEmail } from './src/getLastSignInAttemptEmail'
 import { getUserDisplayName } from './src/getUserDisplayName'
 import { getUserDisplayFirstName } from './src/getUserDisplayFirstName'
@@ -22,6 +26,7 @@ import { updateEmail, UpdateEmailErrorCodes } from './src/updateEmail'
 export {
   auth,
   AuthErrors,
+  fetchSignInMethodsForEmail,
   getLastSignInAttemptEmail,
   getUserDisplayName,
   getUserDisplayFirstName,
@@ -35,6 +40,7 @@ export {
   signOut,
   updateDisplayName,
   updateEmail,
+  FetchSignInMethodsForEmailErrorCodes,
   SendSignInEmailErrorCodes,
   SignInWithEmailLinkErrorCodes,
   UpdateEmailErrorCodes
