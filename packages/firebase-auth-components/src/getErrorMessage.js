@@ -1,11 +1,13 @@
 import {
   AuthErrors,
+  FetchSignInMethodsForEmailErrorCodes,
   SignInWithEmailLinkErrorCodes,
   SendSignInEmailErrorCodes
 } from 'firebase-auth-web'
 
 export default error => {
   switch (error.code) {
+    case FetchSignInMethodsForEmailErrorCodes.InvalidEmail:
     case SignInWithEmailLinkErrorCodes.InvalidEmail:
     case SendSignInEmailErrorCodes.InvalidEmail:
       return 'There seems to be something wrong with your email. Please double check it and try again.'

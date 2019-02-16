@@ -1,31 +1,43 @@
 // Platform
 import React, { useEffect, useState } from 'react'
 // Services
-import { sendSignInEmail } from 'firebase-auth-web'
+import { fetchSignInMethodsForEmail, sendSignInEmail } from 'firebase-auth-web'
 // Components
 import EmailForm from './EmailForm'
 // Helpers
 import getErrorMessage from './getErrorMessage'
 
-/* 
- States:
- - need-email: if (in a different device) => show email form and on submit go to 'confirming'
- - sending-sign-in-email: does what it says
- - retryable-error: error ocurred when confirming sign-in. User should retry.
- - sign-in-email-sent: consumer should navigate to a page that uses the SignInWaitForm
-*/
 export const SignInFormStates = {
   NeedEmail: 'need-email',
+  CheckingAccountExist: 'checking-account-exist',
+  AccountDoesNotExist: 'account-does-not-exist',
   SendingSignInEmail: 'sending-sign-in-email',
   RetryableError: 'retryable-error',
   SignInEmailSent: 'sign-in-email-sent'
-  // NOTE: There is no state for confirmed because the Firbase auth state listener will detect it.
+  // NOTE: There is no state for confirmed because the Firebase auth state listener will detect it.
 }
 
 const SignInForm = ({ children, allowDomain, signedInPath }) => {
   const [state, setState] = useState(SignInFormStates.NeedEmail)
   const [error, setError] = useState()
   const [email, setEmail] = useState('')
+
+  const checkAccountExist = async () => {
+    try {
+      const signInMethods = await fetchSignInMethodsForEmail(email)
+
+      if (signInMethods && signInMethods.length > 0) {
+        setState(SignInFormStates.SendingSignInEmail)
+      } else {
+        setState(SignInFormStates.AccountDoesNotExist)
+      }
+    } catch (error) {
+      const errorMessagge = getErrorMessage(error)
+
+      setError(errorMessagge)
+      setState(SignInFormStates.RetryableError)
+    }
+  }
 
   const sendEmail = async () => {
     try {
@@ -42,6 +54,9 @@ const SignInForm = ({ children, allowDomain, signedInPath }) => {
 
   const nextState = async () => {
     switch (state) {
+      case SignInFormStates.CheckingAccountExist:
+        await checkAccountExist()
+        break
       case SignInFormStates.SendingSignInEmail:
         await sendEmail()
         break
@@ -53,7 +68,7 @@ const SignInForm = ({ children, allowDomain, signedInPath }) => {
 
   const emailSubmitted = email => {
     setEmail(email)
-    setState(SignInFormStates.SendingSignInEmail)
+    setState(SignInFormStates.CheckingAccountExist)
   }
 
   const renderEmailForm = () => {
