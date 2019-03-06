@@ -1,7 +1,7 @@
 /**
  * Access Request Object
  * @typedef {Object} YupOptions
- * @property {boolean} [required=true] The field is required
+ * @property {boolean} [required=true] Default is true
  */
 
 /**
