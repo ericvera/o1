@@ -1,18 +1,19 @@
 const yup = require('yup')
 
 /**
- * @typedef {Object} YupTextOptions
+ * @typedef {Object} YupNumberOptions
  * @property {boolean} [required=true] Default is true
+ * @property {boolean} [mustBeInteger=false] Default is false
  */
 
 /**
- * @type {YupTextOptions}
+ * @type {YupNumberOptions}
  */
 const defaulYupNumberOptions = { required: true, mustBeInteger: false }
 
 /**
  * @param {string} fieldName The name of the field being validated (used for error messages)
- * @param {YupTextOptions} [options]
+ * @param {YupNumberOptions} [options]
  */
 module.exports = (fieldName, options) => {
   const localOptions = Object.assign({}, defaulYupNumberOptions, options)
