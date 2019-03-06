@@ -43,6 +43,12 @@ describe('getCurrency', () => {
     expect(currencyVal).toBeNull()
   })
 
+  test('returns null with malformed numbers', () => {
+    const currencyVal = getCurrency('12.sd')
+
+    expect(currencyVal).toBeNull()
+  })
+
   test('returns null with non-numbers', () => {
     const currencyVal = getCurrency('asdf')
 
@@ -55,13 +61,13 @@ describe('getCurrency', () => {
     expect(currencyVal).toBeNull()
   })
 
-  test('returns null with negative number strings', () => {
+  test('works with negative number strings', () => {
     const currencyVal = getCurrency('-123')
 
     expect(currencyVal).toEqual('-123.00')
   })
 
-  test('returns null with negative numbers', () => {
+  test('works with negative numbers', () => {
     const currencyVal = getCurrency(-0.43)
 
     expect(currencyVal).toEqual('-0.43')
