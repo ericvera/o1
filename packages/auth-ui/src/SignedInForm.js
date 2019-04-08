@@ -6,7 +6,7 @@ import {
   signInWithEmailLink,
   SignInWithEmailLinkErrorCodes,
   getLastSignInAttemptEmail
-} from 'firebase-auth-web'
+} from '@o1/auth'
 // Components
 import EmailForm from './EmailForm'
 // Helpers
@@ -113,9 +113,7 @@ const SignedInForm = ({ children, allowDomain }) => {
     nextState()
   }, [state])
 
-  return (
-    <React.Fragment>{children(state, error, renderEmailForm)}</React.Fragment>
-  )
+  return <>{children(state, error, renderEmailForm)}</>
 }
 
 export default SignedInForm

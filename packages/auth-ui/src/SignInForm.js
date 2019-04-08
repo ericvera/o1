@@ -1,7 +1,7 @@
 // Platform
 import React, { useEffect, useState } from 'react'
 // Services
-import { fetchSignInMethodsForEmail, sendSignInEmail } from 'firebase-auth-web'
+import { fetchSignInMethodsForEmail, sendSignInEmail } from '@o1/auth'
 // Components
 import EmailForm from './EmailForm'
 // Helpers
@@ -85,9 +85,7 @@ const SignInForm = ({ children, allowDomain, signedInPath }) => {
     nextState()
   }, [state])
 
-  return (
-    <React.Fragment>{children(state, error, renderEmailForm)}</React.Fragment>
-  )
+  return <>{children(state, error, renderEmailForm)}</>
 }
 
 export default SignInForm

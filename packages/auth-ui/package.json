@@ -31,6 +31,8 @@
     "@babel/preset-react": "^7.0.0"
   },
   "peerDependencies": {
+    "@o1/auth": "^0.0.8",
+    "@o1/ui": "^0.0.8",
     "formik": "^1.5.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",

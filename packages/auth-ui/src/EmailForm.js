@@ -1,11 +1,7 @@
 // Platform
 import React, { forwardRef, useImperativeHandle } from 'react'
-// Materia-UI
-import FormHelperText from '@material-ui/core/FormHelperText'
-import TextField from '@material-ui/core/TextField'
-import { makeStyles } from '@material-ui/styles'
-// Material-UI-Bonus
-import { ProgressButton } from 'material-ui-bonus'
+// @o1/ui
+import { makeStyles, Button, Text, TextField } from '@o1/ui'
 // Libs
 import { buildSchema, yupEmail } from 'stubborn-yup'
 import { Formik } from 'formik'
@@ -103,8 +99,7 @@ const EmailForm = (
               <TextField
                 id="email"
                 autoFocus={true}
-                fullWidth
-                label="EMAIL"
+                label="Email"
                 placeholder={
                   allowDomain ? `human@${allowDomain}` : 'coolhuman@gmail.com'
                 }
@@ -117,19 +112,16 @@ const EmailForm = (
                 helperText={errors.email && touched.email ? errors.email : null}
               />
             )}
-            {errors.global && (
-              <FormHelperText error={true}>*{errors.global}</FormHelperText>
-            )}
+            {errors.global && <Text variant="error">{errors.global}</Text>}
             <div className={classes.submitButtomContainer}>
-              <ProgressButton
+              <Button
                 disabled={!hideEmailInput && !dirty}
                 showProgress={isSubmitting}
-                type="submit"
                 delay={delay}
                 ref={buttonRef}
               >
                 {submitButtonText}
-              </ProgressButton>
+              </Button>
             </div>
           </form>
         )

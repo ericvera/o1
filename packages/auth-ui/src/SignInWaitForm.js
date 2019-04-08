@@ -1,7 +1,7 @@
 // Platform
 import React, { useEffect, useRef, useState } from 'react'
 // Services
-import { getLastSignInAttemptEmail, sendSignInEmail } from 'firebase-auth-web'
+import { getLastSignInAttemptEmail, sendSignInEmail } from '@o1/auth'
 // Components
 import EmailForm from './EmailForm'
 // Helpers
@@ -96,9 +96,7 @@ const SignInWaitForm = ({ children, allowDomain, signedInPath }) => {
     nextState()
   }, [state])
 
-  return (
-    <React.Fragment>{children(state, error, renderResendForm)}</React.Fragment>
-  )
+  return <>{children(state, error, renderResendForm)}</>
 }
 
 export default SignInWaitForm
