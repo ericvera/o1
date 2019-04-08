@@ -1,0 +1,14 @@
+{
+  "name": "o1",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.13.1"
+  },
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Eric Vera <hey@itsmeeric.com>",
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
+  ]
+}
