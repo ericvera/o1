@@ -1,5 +1,5 @@
 {
-  "name": "@oi/ui",
+  "name": "@o1/ui",
   "version": "0.0.6",
   "description": "A few extra React components built on top of Material-UI",
   "main": "lib/index.js",
@@ -66,5 +66,7 @@
       "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/.jest/imageMock.js"
     }
   },
-  "gitHead": "591400823b364bdbfc8cf3f008c3c82e5b95f49f"
+  "directories": {
+    "lib": "lib"
+  }
 }
