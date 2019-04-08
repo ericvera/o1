@@ -1,10 +1,10 @@
 {
   "name": "@o1/ui",
   "version": "0.0.7",
-  "description": "A few extra React components built on top of Material-UI",
+  "description": "A few React components built on top of Material-UI",
   "main": "lib/index.js",
   "module": "lib/index.js",
-  "author": "Eric Vera <hey@itsmeeric.com>",
+  "author": "Eric Vera <eric.vera@gmail.com>",
   "license": "MIT",
   "private": false,
   "scripts": {
