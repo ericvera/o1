@@ -66,5 +66,5 @@
       "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/.jest/imageMock.js"
     }
   },
-  "gitHead": "93b124c66fa9f8e8af7c1d6050b70227abf8334f"
+  "gitHead": "35e77b3748d481b1ccc8a6014e6eceedc6c1c850"
 }
