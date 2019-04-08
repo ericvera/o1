@@ -1,18 +1,10 @@
 // Platform
 import React, { forwardRef, useImperativeHandle } from 'react'
 // @o1/ui
-import { makeStyles, Button, Text, TextField } from '@o1/ui'
+import { Button, Text, TextField } from '@o1/ui'
 // Libs
 import { buildSchema, yupEmail } from 'stubborn-yup'
 import { Formik } from 'formik'
-
-const useStyles = makeStyles(theme => ({
-  submitButtomContainer: {
-    paddingTop: theme.spacing.unit * 2,
-    paddingBottom: theme.spacing.unit,
-    textAlign: 'right'
-  }
-}))
 
 const schema = buildSchema(
   {
@@ -32,7 +24,6 @@ const EmailForm = (
   },
   ref
 ) => {
-  const classes = useStyles()
   const buttonRef = React.createRef()
 
   useImperativeHandle(ref, () => ({
@@ -99,7 +90,7 @@ const EmailForm = (
               <TextField
                 id="email"
                 autoFocus={true}
-                label="Email"
+                marginTopLevel="l3"
                 placeholder={
                   allowDomain ? `human@${allowDomain}` : 'coolhuman@gmail.com'
                 }
@@ -113,16 +104,16 @@ const EmailForm = (
               />
             )}
             {errors.global && <Text variant="error">{errors.global}</Text>}
-            <div className={classes.submitButtomContainer}>
-              <Button
-                disabled={!hideEmailInput && !dirty}
-                showProgress={isSubmitting}
-                delay={delay}
-                ref={buttonRef}
-              >
-                {submitButtonText}
-              </Button>
-            </div>
+
+            <Button
+              marginTopLevel="l4"
+              disabled={!hideEmailInput && !dirty}
+              showProgress={isSubmitting}
+              delay={delay}
+              ref={buttonRef}
+            >
+              {submitButtonText}
+            </Button>
           </form>
         )
       }}
