@@ -107,7 +107,6 @@ const EmailForm = (
 
             <Button
               marginTopLevel="l4"
-              disabled={!hideEmailInput && !dirty}
               showProgress={isSubmitting}
               delay={delay}
               ref={buttonRef}
