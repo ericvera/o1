@@ -2,7 +2,7 @@
   "name": "o1",
   "private": true,
   "devDependencies": {
-    "lerna": "^3.13.1"
+    "lerna": "^3.13.2"
   },
   "version": "0.0.1",
   "main": "index.js",
