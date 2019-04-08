@@ -3,7 +3,7 @@ import { auth } from './auth'
 export const signInWithEmailLink = async email => {
   await auth.signInWithEmailLink(email)
 
-  window.localStorage.removeItem('firebase-auth-web-email')
+  window.localStorage.removeItem('o1-auth-email')
 }
 
 export const SignInWithEmailLinkErrorCodes = {

@@ -3,7 +3,7 @@ import {
   FetchSignInMethodsForEmailErrorCodes,
   SignInWithEmailLinkErrorCodes,
   SendSignInEmailErrorCodes
-} from 'firebase-auth-web'
+} from '@o1/auth'
 
 export default error => {
   switch (error.code) {

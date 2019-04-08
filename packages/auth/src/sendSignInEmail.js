@@ -15,7 +15,7 @@ export const sendSignInEmail = async (email, signInPath) => {
     handleCodeInApp: true
   }
 
-  window.localStorage.setItem('firebase-auth-web-email', email)
+  window.localStorage.setItem('o1-auth-email', email)
 
   await auth.sendSignInLinkToEmail(email, actionCodeSettings)
 }

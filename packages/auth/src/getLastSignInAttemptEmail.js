@@ -1,2 +1,2 @@
 export const getLastSignInAttemptEmail = () =>
-  window.localStorage.getItem('firebase-auth-web-email')
+  window.localStorage.getItem('o1-auth-email')
