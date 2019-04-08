@@ -6,7 +6,7 @@
   },
   "version": "0.0.1",
   "main": "index.js",
-  "author": "Eric Vera <hey@itsmeeric.com>",
+  "author": "Eric Vera <eric.vera+code@gmail.com>",
   "license": "MIT",
   "workspaces": [
     "packages/*"

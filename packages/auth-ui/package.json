@@ -1,11 +1,10 @@
 {
-  "name": "firebase-auth-components",
-  "version": "2.0.6",
-  "description": "A few components to simplify Firebase auth on top of material-ui",
+  "name": "@o1/auth-ui",
+  "version": "0.0.0",
+  "description": "Firebase auth components on top of @o1/ui",
   "main": "lib/index.js",
   "module": "lib/index.js",
-  "repository": "https://github.com/ericvera/firebase-auth-components.git",
-  "author": "Eric Vera <hey@itsmeeric.com>",
+  "author": "Eric Vera <eric.vera+code@gmail.com>",
   "license": "MIT",
   "private": false,
   "scripts": {

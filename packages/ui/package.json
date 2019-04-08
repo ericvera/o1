@@ -4,7 +4,7 @@
   "description": "A few React components built on top of Material-UI",
   "main": "lib/index.js",
   "module": "lib/index.js",
-  "author": "Eric Vera <eric.vera@gmail.com>",
+  "author": "Eric Vera <eric.vera+code@gmail.com>",
   "license": "MIT",
   "private": false,
   "scripts": {

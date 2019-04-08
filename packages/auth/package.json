@@ -1,9 +1,9 @@
 {
   "name": "@o1/auth",
-  "version": "0.0.12",
+  "version": "0.0.0",
   "description": "Lightweight helper for Firebase Auth Web ",
   "main": "index.js",
-  "author": "Eric Vera <eric.vera@gmail.com>",
+  "author": "Eric Vera <eric.vera+code@gmail.com>",
   "license": "MIT",
   "private": false,
   "publishConfig": {
