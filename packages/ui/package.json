@@ -1,10 +1,9 @@
 {
-  "name": "material-ui-bonus",
+  "name": "@oi/ui",
   "version": "2.0.0-alpha.37",
   "description": "A few extra React components built on top of Material-UI",
   "main": "lib/index.js",
   "module": "lib/index.js",
-  "repository": "https://github.com/ericvera/material-ui-bonus.git",
   "author": "Eric Vera <hey@itsmeeric.com>",
   "license": "MIT",
   "private": false,
