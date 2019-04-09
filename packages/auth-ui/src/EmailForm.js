@@ -74,7 +74,6 @@ const EmailForm = (
     >
       {props => {
         const {
-          dirty,
           values,
           touched,
           errors,

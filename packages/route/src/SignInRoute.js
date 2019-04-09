@@ -1,7 +1,6 @@
 // Framework
 import React from 'react'
-import Redirect from 'react-router-dom/Redirect'
-import Route from 'react-router-dom/Route'
+import { Redirect, Route } from 'react-router-dom'
 
 const SignInRoute = ({
   component: Component,
