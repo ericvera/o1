@@ -1,6 +1,6 @@
 {
   "name": "@o1/route",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "A few extra Routes to extend react-router-dom",
   "main": "lib/index.js",
   "module": "lib/index.js",
