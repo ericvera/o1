@@ -4,6 +4,7 @@ import { Redirect, Route } from 'react-router-dom'
 
 const SignInRoute = ({
   component: Component,
+  componentProps = {},
   authenticated,
   authenticatedTo,
   ...rest
@@ -18,7 +19,7 @@ const SignInRoute = ({
           }}
         />
       ) : (
-        <Component {...props} />
+        <Component {...props} {...componentProps} />
       )
     }
   />

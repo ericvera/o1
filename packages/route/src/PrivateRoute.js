@@ -4,6 +4,7 @@ import { Redirect, Route } from 'react-router-dom'
 
 const PrivateRoute = ({
   component: Component,
+  componentProps = {},
   authenticated,
   unauthenticatedTo,
   ...rest
@@ -12,7 +13,7 @@ const PrivateRoute = ({
     {...rest}
     render={props =>
       authenticated ? (
-        <Component {...props} />
+        <Component {...props} {...componentProps} />
       ) : (
         <Redirect
           to={{
