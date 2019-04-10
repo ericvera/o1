@@ -42,7 +42,7 @@ const Heading = ({
 }
 
 Heading.propTypes = exact({
-  children: PropTypes.string,
+  children: PropTypes.node,
   color: ColorPropTypes,
   level: HeadingLevelPropTypes,
   marginBottomLevel: SpacingLevelPropTypes,

@@ -2,6 +2,8 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import Heading from './Heading'
 
+const personName = 'Person Name'
+
 storiesOf('Heading', module)
   .add(
     'all',
@@ -24,3 +26,4 @@ storiesOf('Heading', module)
   .add('custom color (brand)', () => (
     <Heading color="brand">Hi, I have the color of your brand :)</Heading>
   ))
+  .add('complex text', () => <Heading>Hi {personName}!</Heading>)
