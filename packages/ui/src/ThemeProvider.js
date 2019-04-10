@@ -210,6 +210,11 @@ const theme = createMuiTheme({
         color: getColor(Color.background),
         fontSize: getFontSize(FontSizeLevel.l2)
       }
+    },
+    MuiTypography: {
+      root: {
+        overflowWrap: 'break-word'
+      }
     }
   },
   typography: {
