@@ -1,3 +1,6 @@
+// Details about the install step at https://material-ui.com/css-in-js/basics/
+import './setup'
+
 import AppBar from './AppBar'
 import Button from './Button'
 import Container from './Container'
@@ -14,10 +17,9 @@ import Text from './Text'
 import TextField from './TextField'
 import ThemeProvider from './ThemeProvider'
 // Export directly from Material-UI
-import { install, makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@material-ui/styles'
 
 export {
-  install,
   makeStyles,
   AppBar,
   Button,
