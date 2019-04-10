@@ -4,22 +4,21 @@ import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Material-UI
 import MaterialUIList from '@material-ui/core/List'
-import { makeStyles } from '@material-ui/styles'
 // Helpers
 import { SpacingLevel } from './helpers/constants'
-import getSpacing from './helpers/getSpacing'
+import { SpacingLevelPropTypes } from './helpers/PropTypes'
+// Hooks
+import useMarginStyles from './hooks/useMarginStyles'
 
-const useStyles = makeStyles({
-  list: {
-    marginTop: getSpacing(SpacingLevel.l3)
-  }
-})
-
-const List = ({ children }) => {
-  const classes = useStyles()
+const List = ({
+  children,
+  marginTopLevel = SpacingLevel.l3,
+  marginBottomLevel = SpacingLevel.l0
+}) => {
+  const marginClassName = useMarginStyles(marginTopLevel, marginBottomLevel)
 
   return (
-    <MaterialUIList disablePadding={true} className={classes.list}>
+    <MaterialUIList disablePadding={true} className={marginClassName}>
       {children}
     </MaterialUIList>
   )
@@ -29,7 +28,9 @@ List.propTypes = exact({
   children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element)
-  ])
+  ]),
+  marginBottomLevel: SpacingLevelPropTypes,
+  marginTopLevel: SpacingLevelPropTypes
 })
 
 export default List
