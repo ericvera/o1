@@ -1,6 +1,6 @@
 {
   "name": "@o1/auth-ui",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "Firebase auth components on top of @o1/ui",
   "main": "lib/index.js",
   "module": "lib/index.js",
