@@ -26,16 +26,16 @@
     "components"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/core": "^7.3.3",
-    "@babel/preset-react": "^7.0.0"
+    "@babel/cli": "~7",
+    "@babel/core": "~7",
+    "@babel/preset-react": "~7"
   },
   "peerDependencies": {
-    "@o1/auth": "^0.0.8",
-    "@o1/ui": "^0.0.8",
-    "formik": "^1.5.0",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "stubborn-yup": "^1.0.3"
+    "@o1/auth": "~0",
+    "@o1/ui": "~0",
+    "formik": "~1",
+    "react": "~16",
+    "react-dom": "~16",
+    "stubborn-yup": "~1"
   }
 }
