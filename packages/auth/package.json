@@ -20,9 +20,10 @@
     "react"
   ],
   "peerDependencies": {
-    "firebase": "^5.9.3"
+    "firebase": "~5",
+    "react": "~16"
   },
   "devDependencies": {
-    "@firebase/app-types": "^0.3.7"
+    "@firebase/app-types": "~0"
   }
 }

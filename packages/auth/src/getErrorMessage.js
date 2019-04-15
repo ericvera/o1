@@ -1,9 +1,7 @@
-import {
-  AuthErrors,
-  FetchSignInMethodsForEmailErrorCodes,
-  SignInWithEmailLinkErrorCodes,
-  SendSignInEmailErrorCodes
-} from '@o1/auth'
+import { AuthErrors } from './auth'
+import { FetchSignInMethodsForEmailErrorCodes } from './fetchSignInMethodsForEmail'
+import { SendSignInEmailErrorCodes } from './sendSignInEmail'
+import { SignInWithEmailLinkErrorCodes } from './signInWithEmailLink'
 
 export default error => {
   switch (error.code) {
@@ -16,7 +14,6 @@ export default error => {
     case AuthErrors.TooManyRequests:
       return 'It seems we are experiencing more traffic than usual. Please try again in a minute or two.'
     default:
-      return `This is an unexpected error. Please try again and if the problem continues copy this and send it to our support mail: (code: ${error.code ||
-        'no code'} / message: ${error.message || error})`
+      return undefined
   }
 }
