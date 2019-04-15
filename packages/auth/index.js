@@ -22,6 +22,10 @@ import {
 import { signOut } from './src/signOut'
 import { updateDisplayName } from './src/updateDisplayName'
 import { updateEmail, UpdateEmailErrorCodes } from './src/updateEmail'
+import useAuthState from './src/useAuthState'
+import useSignedIn, { SignedInState } from './src/useSignedIn'
+import useSignIn, { SignInState } from './src/useSignIn'
+import useSignInWait, { SignInWaitState } from './src/useSignInWait'
 
 export {
   auth,
@@ -40,8 +44,15 @@ export {
   signOut,
   updateDisplayName,
   updateEmail,
+  useAuthState,
+  useSignedIn,
+  useSignIn,
+  useSignInWait,
   FetchSignInMethodsForEmailErrorCodes,
   SendSignInEmailErrorCodes,
   SignInWithEmailLinkErrorCodes,
+  SignedInState,
+  SignInState,
+  SignInWaitState,
   UpdateEmailErrorCodes
 }
