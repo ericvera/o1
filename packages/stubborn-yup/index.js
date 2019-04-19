@@ -7,6 +7,7 @@ const yupEmail = require('./yupEmail')
 const yupName = require('./yupName')
 const yupNumber = require('./yupNumber')
 const yupPhone = require('./yupPhone')
+const yupPostalCode = require('./yupPostalCode')
 const yupState = require('./yupState')
 const yupText = require('./yupText')
 
@@ -18,6 +19,7 @@ module.exports = {
   yupName,
   yupNumber,
   yupPhone,
+  yupPostalCode,
   yupState,
   yupText
 }
