@@ -17,11 +17,13 @@ const TextField = ({
   error,
   helperText,
   id,
+  inputmode,
   label,
   marginBottomLevel = SpacingLevel.l0,
   marginTopLevel = SpacingLevel.l0,
   onBlur,
   onChange,
+  pattern,
   placeholder,
   type,
   value
@@ -38,9 +40,11 @@ const TextField = ({
       fullWidth={true}
       helperText={helperText}
       id={id}
+      inputmode={inputmode}
       label={label}
       onBlur={onBlur}
       onChange={onChange}
+      patter={pattern}
       placeholder={placeholder}
       type={type}
       value={value}
@@ -55,11 +59,13 @@ TextField.propTypes = exact({
   error: PropTypes.bool,
   helperText: PropTypes.string,
   id: PropTypes.string,
+  inputmode: PropTypes.string,
   label: PropTypes.string,
   marginBottomLevel: SpacingLevelPropTypes,
   marginTopLevel: SpacingLevelPropTypes,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
+  pattern: PropTypes.func,
   placeholder: PropTypes.string.isRequired,
   type: PropTypes.string,
   value: PropTypes.string
