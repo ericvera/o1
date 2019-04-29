@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { fetchSignInMethodsForEmail } from './fetchSignInMethodsForEmail'
 import { sendSignInEmail } from './sendSignInEmail'
 import getErrorMessage from './getErrorMessage'
 

@@ -23,7 +23,7 @@ import getFontSize from '../helpers/getFontSize'
 import getFontWeight from '../helpers/getFontWeight'
 import getSpacing from '../helpers/getSpacing'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   logoContainer: {
     height: getSpacing(SpacingLevel.l8),
     display: 'flex',
@@ -46,9 +46,10 @@ const useStyles = makeStyles({
   },
   listItem: {
     paddingTop: getSpacing(SpacingLevel.l4),
-    paddingBottom: getSpacing(SpacingLevel.l4)
+    paddingBottom: getSpacing(SpacingLevel.l4),
+    ...theme.mixins.gutters()
   }
-})
+}))
 
 const MenuAppBar = ({
   menuItems,
