@@ -150,6 +150,9 @@ Button.propTypes = exact({
   showProgress: PropTypes.bool
 })
 
+/**
+ * @returns {Button}
+ */
 export default forwardRef((props, ref) => (
   <Button {...props} forwardedRef={ref} />
 ))
