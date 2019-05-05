@@ -12,13 +12,42 @@ import getFontWeight from './helpers/getFontWeight'
 import getColor from './helpers/getColor'
 import { Color, FontSizeLevel, FontWeight } from './helpers/constants'
 
+/**
+ * @type {["none", string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string, string]}
+ */
+// Using @type and spelling this out one by one to keep tsc happy
+const shadowLevels = [
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none',
+  'none'
+]
+
 const theme = createMuiTheme({
-  typography: {
-    useNextVariants: true
-  },
   // NOTE: shadows uses 25 levels of shadows. Setting
   //  them all to avoid the warning and disable them all.
-  shadows: Array(25).fill('none'),
+  shadows: shadowLevels,
   props: {
     MuiAppBar: {
       position: 'fixed',
@@ -38,9 +67,6 @@ const theme = createMuiTheme({
       disableRipple: true,
       disableTouchRipple: true
     },
-    MuiInputBase: {
-      fullWidth: true
-    },
     MuiInput: {
       disableUnderline: true,
       fullWidth: true
@@ -54,9 +80,6 @@ const theme = createMuiTheme({
       disableGutters: true
     },
     MuiListItemText: {
-      primaryTypographyProps: {
-        variant: 'h3'
-      },
       primaryTypographyProps: {
         variant: 'body1'
       }

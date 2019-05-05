@@ -1,5 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
+import { action } from '@storybook/addon-actions'
 import Button from './Button'
 import Container from './Container'
 import Footer from './Footer'
@@ -19,7 +20,7 @@ storiesOf('Footer', module)
         <Footer>
           <Text>Some text</Text>
           <div>
-            <Button>Button text</Button>
+            <Button onClick={() => action('pressed')}>Button text</Button>
           </div>
         </Footer>
       </>
@@ -42,7 +43,7 @@ storiesOf('Footer', module)
         <Footer marginTopLevel="l5">
           <Text>Some text</Text>
           <div>
-            <Button>Button text</Button>
+            <Button onClick={() => action('pressed')}>Button text</Button>
           </div>
         </Footer>
       </>

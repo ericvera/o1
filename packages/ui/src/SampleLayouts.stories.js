@@ -39,7 +39,10 @@ storiesOf('Sample Layouts', module)
             It comes followed by a second paragraph for illustration purpose.
           </p>
         </Text>
-        <Button marginTopLevel="l4" onClick={action('go somewhere pressed')}>
+        <Button
+          marginTopLevel="l4"
+          onClick={() => action('go somewhere pressed')}
+        >
           Go somewhere
         </Button>
       </Container>

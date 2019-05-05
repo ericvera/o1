@@ -1,5 +1,5 @@
 // Framework
-import React, { forwardRef, useRef, useImperativeHandle } from 'react'
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Material-UI
@@ -60,8 +60,8 @@ const Button = ({
   centered = true,
   children,
   color = Color.primary,
-  delay,
-  forwardedRef,
+  delay = undefined,
+  forwardedRef = undefined,
   fullWidth = false,
   marginBottomLevel = SpacingLevel.l0,
   marginTopLevel = SpacingLevel.l0,
@@ -151,8 +151,26 @@ Button.propTypes = exact({
 })
 
 /**
- * @returns {Button}
+ * @typedef {Object} ButtonProps
+ * @property {boolean} [centered]
+ * @property {string} children
+ * @property {string} [color]
+ * @property {number} [delay]
+ * @property {React.Ref<any>} [forwardedRef]
+ * @property {boolean} [fullWidth]
+ * @property {string} [marginBottomLevel]
+ * @property {string} [marginTopLevel]
+ * @property {function} onClick
+ * @property {string} [variant]
+ * @property {React.Ref<any>} [ref]
+ * @property {boolean} [showProgress]
  */
-export default forwardRef((props, ref) => (
+
+/**
+ * @type {React.ComponentType<ButtonProps>}
+ */
+export const RefdButton = forwardRef((props, ref) => (
   <Button {...props} forwardedRef={ref} />
 ))
+
+export default RefdButton

@@ -15,6 +15,9 @@ import {
 import useMarginStyles from './hooks/useMarginStyles'
 import useColorClassName from './hooks/useColorClassName'
 
+/**
+ * @type {Object.<string, 'h1' | 'h2' | 'h3'>}
+ */
 const headingLevelToVariant = {
   [HeadingLevel.l1]: 'h1',
   [HeadingLevel.l2]: 'h2',

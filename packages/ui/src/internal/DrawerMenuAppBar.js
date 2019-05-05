@@ -75,12 +75,7 @@ const MenuAppBar = ({
         <AppBarButton side="right" icon={AppBarButtonIcon.empty} />
       </BaseAppBar>
 
-      <SwipeableDrawer
-        open={open}
-        onClose={toggleDrawer}
-        onOpen={toggleDrawer}
-        classes={{ paper: classes.drawer }}
-      >
+      <SwipeableDrawer open={open} onClose={toggleDrawer} onOpen={toggleDrawer}>
         <div className={classes.logoContainer}>
           {menuImage && (
             <InnerContainer centered={false}>{menuImage}</InnerContainer>

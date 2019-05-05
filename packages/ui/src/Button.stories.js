@@ -20,7 +20,11 @@ const ResetTestComponent = () => {
       <Button
         color="primary"
         onClick={() => {
-          buttonRef.current.resetDelay()
+          const currentRef = buttonRef.current
+
+          if (currentRef) {
+            currentRef.resetDelay()
+          }
         }}
       >
         Reset delay
