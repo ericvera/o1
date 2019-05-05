@@ -144,7 +144,6 @@ Button.propTypes = exact({
   marginTopLevel: SpacingLevelPropTypes,
   onClick: PropTypes.func,
   variant: ButtonVariantPropTypes,
-  // variant === 'progress'
   /** Delay in seconds before the button can be pressed */
   delay: PropTypes.number,
   showProgress: PropTypes.bool
