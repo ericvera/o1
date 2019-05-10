@@ -11,6 +11,7 @@ import Heading from './Heading'
 import List from './List'
 import ListItem from './ListItem'
 import Progress from './Progress'
+import Select from './Select'
 import Snackbar from './Snackbar'
 import SvgIcon from './SvgIcon'
 import Text from './Text'
@@ -31,6 +32,7 @@ export {
   List,
   ListItem,
   Progress,
+  Select,
   Snackbar,
   SvgIcon,
   Text,
