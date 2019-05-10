@@ -4,6 +4,7 @@ const buildSchema = require('./buildSchema')
 const yupCity = require('./yupCity')
 const yupCurrency = require('./yupCurrency')
 const yupEmail = require('./yupEmail')
+const yupEnum = require('./yupEnum')
 const yupName = require('./yupName')
 const yupNumber = require('./yupNumber')
 const yupPhone = require('./yupPhone')
@@ -15,6 +16,7 @@ module.exports = {
   buildSchema,
   yupCity,
   yupCurrency,
+  yupEnum,
   yupEmail,
   yupName,
   yupNumber,
