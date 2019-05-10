@@ -20,7 +20,7 @@
     "react"
   ],
   "peerDependencies": {
-    "firebase": "~5",
+    "firebase": "~6",
     "react": "~16"
   },
   "devDependencies": {

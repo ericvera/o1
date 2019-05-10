@@ -25,12 +25,12 @@
     "react"
   ],
   "devDependencies": {
-    "@babel/cli": "^7.4.3",
-    "@babel/core": "^7.4.3",
-    "@babel/preset-react": "^7.0.0"
+    "@babel/cli": "~7",
+    "@babel/core": "~7",
+    "@babel/preset-react": "~7"
   },
   "peerDependencies": {
-    "react": "^16.8.6",
-    "react-router-dom": "^5.0.0"
+    "react": "~16",
+    "react-router-dom": "~5"
   }
 }
