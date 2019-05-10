@@ -38,3 +38,36 @@ storiesOf('TextField', module)
       helperText=""
     />
   ))
+  .add('multiline with no rows', () => (
+    <TextField
+      placeholder="Placeholder text"
+      autoCapitalize="words"
+      multiline={true}
+      onChange={action('text changed')}
+      error={false}
+      helperText=""
+    />
+  ))
+  .add('multiline with rows and rowsMax', () => (
+    <TextField
+      placeholder="Placeholder text"
+      autoCapitalize="words"
+      multiline={true}
+      rows={2}
+      rowsMax={4}
+      onChange={action('text changed')}
+      error={false}
+      helperText=""
+    />
+  ))
+  .add('multiline with rowsMax', () => (
+    <TextField
+      placeholder="Placeholder text"
+      autoCapitalize="words"
+      multiline={true}
+      rowsMax={4}
+      onChange={action('text changed')}
+      error={false}
+      helperText=""
+    />
+  ))

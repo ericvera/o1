@@ -187,14 +187,14 @@ const theme = createMuiTheme({
           color: getColor(Color.primaryDisabled),
           backgroundColor: getColor(Color.inputBackgroundDisabled)
         }
-      },
-      multiline: {
-        paddingBottom: 32
       }
     },
     MuiInputBase: {
       input: {
         borderStyle: 'none',
+        padding: getFontSize(FontSizeLevel.l2)
+      },
+      multiline: {
         padding: getFontSize(FontSizeLevel.l2)
       }
     },

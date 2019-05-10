@@ -21,10 +21,13 @@ const TextField = ({
   label,
   marginBottomLevel = SpacingLevel.l0,
   marginTopLevel = SpacingLevel.l0,
+  multiline = false,
   onBlur,
   onChange,
   pattern,
   placeholder,
+  rows,
+  rowsMax,
   type,
   value
 }) => {
@@ -42,9 +45,12 @@ const TextField = ({
       id={id}
       inputProps={{ inputMode, pattern }}
       label={label}
+      multiline={multiline}
       onBlur={onBlur}
       onChange={onChange}
       placeholder={placeholder}
+      rows={rows}
+      rowsMax={rowsMax}
       type={type}
       value={value}
     />
@@ -62,10 +68,13 @@ TextField.propTypes = exact({
   label: PropTypes.string,
   marginBottomLevel: SpacingLevelPropTypes,
   marginTopLevel: SpacingLevelPropTypes,
+  multiline: PropTypes.bool,
   onBlur: PropTypes.func,
   onChange: PropTypes.func,
   pattern: PropTypes.string,
   placeholder: PropTypes.string.isRequired,
+  rows: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  rowsMax: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   type: PropTypes.string,
   value: PropTypes.string
 })
