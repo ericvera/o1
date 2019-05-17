@@ -26,19 +26,23 @@ const useStyles = makeStyles({
   }
 })
 
-const ListItem = ({ onClick, primary, secondary, divider = true }) => {
+const ListItem = ({
+  onClick,
+  primary,
+  secondary,
+  children,
+  divider = true
+}) => {
   const classes = useStyles()
 
-  const primaryText = primary ? (
-    <Heading level="l3">{primary}</Heading>
-  ) : (
-    undefined
-  )
-  const secondaryText = secondary ? (
-    <Text marginTopLevel={primary ? 'l3' : 'l0'}>{secondary}</Text>
-  ) : (
-    undefined
-  )
+  const primaryText =
+    !children && primary ? <Heading level="l3">{primary}</Heading> : undefined
+  const secondaryText =
+    !children && secondary ? (
+      <Text marginTopLevel={primary ? 'l3' : 'l0'}>{secondary}</Text>
+    ) : (
+      undefined
+    )
   const button = onClick ? <ChevronRightIcon /> : undefined
 
   return (
@@ -50,6 +54,7 @@ const ListItem = ({ onClick, primary, secondary, divider = true }) => {
       <MaterialUIListItemText disableTypography={true}>
         {primaryText}
         {secondaryText}
+        {children}
       </MaterialUIListItemText>
       {button}
     </MaterialUIListItem>
@@ -57,6 +62,7 @@ const ListItem = ({ onClick, primary, secondary, divider = true }) => {
 }
 
 ListItem.propTypes = exact({
+  children: PropTypes.node,
   divider: PropTypes.bool,
   primary: PropTypes.string,
   secondary: PropTypes.oneOfType([

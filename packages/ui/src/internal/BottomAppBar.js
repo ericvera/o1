@@ -7,7 +7,13 @@ import Button from '../Button'
 // Internal
 import BaseAppBar from './BaseAppBar'
 
-const BottomAppBar = ({ buttonColor, buttonText, content, onClick }) => {
+const BottomAppBar = ({
+  buttonColor,
+  buttonProps,
+  buttonText,
+  content,
+  onClick
+}) => {
   return (
     <BaseAppBar location="bottom" centered={true}>
       {content}
@@ -16,6 +22,7 @@ const BottomAppBar = ({ buttonColor, buttonText, content, onClick }) => {
         fullWidth={!content}
         centered={false}
         color={buttonColor}
+        {...buttonProps}
       >
         {buttonText}
       </Button>
@@ -25,6 +32,7 @@ const BottomAppBar = ({ buttonColor, buttonText, content, onClick }) => {
 
 BottomAppBar.propTypes = exact({
   buttonColor: PropTypes.string,
+  buttonProps: PropTypes.shape(Button.propTypes),
   buttonText: PropTypes.string,
   content: PropTypes.node,
   onClick: PropTypes.func

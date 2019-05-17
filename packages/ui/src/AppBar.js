@@ -8,6 +8,7 @@ import { AppBarVariantPropTypes, ColorPropTypes } from './helpers/PropTypes'
 import AppBarButton from './internal/AppBarButton'
 import BaseAppBar from './internal/BaseAppBar'
 import BottomAppBar from './internal/BottomAppBar'
+import Button from './Button'
 import DialogMenuAppBar from './internal/DialogMenuAppBar'
 import DrawerMenuAppBar from './internal/DrawerMenuAppBar'
 
@@ -65,6 +66,9 @@ AppBar.propTypes = exact({
   // not-small screen
   notSmallScreenAppBarBackgroundColor: ColorPropTypes,
   notSmallScreenLinkTextColor: ColorPropTypes,
+
+  /* bottom-* */
+  buttonProps: PropTypes.shape(Button.propTypes),
 
   /* bottom-full-button */
   content: PropTypes.node,

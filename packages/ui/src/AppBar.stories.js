@@ -86,6 +86,20 @@ storiesOf('AppBar', module)
       onClick={action('text pressed')}
     />
   ))
+  .add('bottom-text-button (with button props)', () => (
+    <AppBar
+      variant="bottom-full-button"
+      content={
+        <div>
+          <Heading level="l3">Some heading</Heading>
+          <Text>Some text</Text>
+        </div>
+      }
+      buttonText="Click the button"
+      buttonProps={{ variant: 'progress', showProgress: true }}
+      onClick={action('text pressed')}
+    />
+  ))
   .add('top (close) and bottom (bottom-text-bottom)', () => (
     <div>
       <AppBar variant="close" onClick={action('close')} />
