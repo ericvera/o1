@@ -234,6 +234,11 @@ const theme = createMuiTheme({
         fontSize: getFontSize(FontSizeLevel.l2)
       }
     },
+    MuiSwitch: {
+      root: {
+        marginRight: -8
+      }
+    },
     MuiTypography: {
       root: {
         overflowWrap: 'break-word'
