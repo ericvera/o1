@@ -3,14 +3,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Material-UI
+import FormControl from '@material-ui/core/FormControl'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
+import InputLabel from '@material-ui/core/InputLabel'
 import MaterialUISwitch from '@material-ui/core/Switch'
 import { makeStyles } from '@material-ui/styles'
 // Components
 import Text from './Text'
 // Helpers
 import { Color, SpacingLevel } from './helpers/constants'
-import { SpacingLevelPropTypes, ColorPropTypes } from './helpers/PropTypes'
+import { ColorPropTypes, SpacingLevelPropTypes } from './helpers/PropTypes'
 import getColor from './helpers/getColor'
 // Hooks
 import useMarginStyles from './hooks/useMarginStyles'
@@ -52,47 +54,52 @@ const useStyles = makeStyles({
 
 const Switch = ({
   checked,
-  labelText,
+  label,
   marginBottomLevel = SpacingLevel.l0,
   marginTopLevel = SpacingLevel.l0,
   onChange,
+  text,
   value
 }) => {
   const marginClassName = useMarginStyles(marginTopLevel, marginBottomLevel)
   const classes = useStyles()
 
   return (
-    <FormControlLabel
-      classes={{ label: classes.flex }}
-      className={[marginClassName, classes.fullWidth].join(' ')}
-      labelPlacement="start"
-      control={
-        <MaterialUISwitch
-          classes={{
-            switchBase: classes.colorSwitchBase,
-            checked: classes.colorChecked,
-            bar: classes.colorBar,
-            icon: classes.colorIcon,
-            iconChecked: classes.colorIconChecked
-          }}
-          disableRipple
-          checked={checked}
-          onChange={onChange}
-          value={value}
-        />
-      }
-      label={<Text>{labelText}</Text>}
-    />
+    <FormControl className={marginClassName}>
+      <InputLabel>{label}</InputLabel>
+      <FormControlLabel
+        classes={{ label: classes.flex }}
+        className={classes.fullWidth}
+        labelPlacement="start"
+        control={
+          <MaterialUISwitch
+            classes={{
+              switchBase: classes.colorSwitchBase,
+              checked: classes.colorChecked,
+              bar: classes.colorBar,
+              icon: classes.colorIcon,
+              iconChecked: classes.colorIconChecked
+            }}
+            disableRipple
+            checked={checked}
+            onChange={onChange}
+            value={value}
+          />
+        }
+        label={<Text>{text}</Text>}
+      />
+    </FormControl>
   )
 }
 
 Switch.propTypes = exact({
   color: ColorPropTypes,
   checked: PropTypes.bool,
-  labelText: PropTypes.string,
+  label: PropTypes.string,
   marginBottomLevel: SpacingLevelPropTypes,
   marginTopLevel: SpacingLevelPropTypes,
   onChange: PropTypes.func,
+  text: PropTypes.string,
   value: PropTypes.string
 })
 

@@ -4,6 +4,7 @@ import './setup'
 import AppBar from './AppBar'
 import Button from './Button'
 import Container from './Container'
+import CustomInputContainer from './CustomInputContainer'
 import Divider from './Divider'
 import Footer from './Footer'
 import Grid from './Grid'
@@ -26,6 +27,7 @@ export {
   AppBar,
   Button,
   Container,
+  CustomInputContainer,
   Divider,
   Footer,
   Grid,

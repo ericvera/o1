@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import { storiesOf } from '@storybook/react'
 // Components
-import Container from './Container'
 import Switch from './Switch'
 
 const SwitchSample1 = () => {
@@ -11,7 +10,8 @@ const SwitchSample1 = () => {
   return (
     <Switch
       checked={checked}
-      labelText="This is the label text"
+      label="Credit card details"
+      text="This is the label text"
       onChange={() => setChecked(!checked)}
       value="some-value"
     />
