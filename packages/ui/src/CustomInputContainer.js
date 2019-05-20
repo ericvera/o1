@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Material-UI
-import FormControl from '@material-ui/core/FormControl'
+import FormGroup from '@material-ui/core/FormGroup'
 import InputLabel from '@material-ui/core/InputLabel'
 // Helpers
 import { SpacingLevel } from './helpers/constants'
@@ -20,10 +20,10 @@ const CustomInputContainer = ({
   const marginClassName = useMarginStyles(marginTopLevel, marginBottomLevel)
 
   return (
-    <FormControl className={marginClassName}>
+    <FormGroup className={marginClassName}>
       <InputLabel>{label}</InputLabel>
       {children}
-    </FormControl>
+    </FormGroup>
   )
 }
 
