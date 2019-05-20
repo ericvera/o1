@@ -15,10 +15,10 @@ storiesOf('Grid', module)
   ))
   .add('TextFields', () => (
     <Grid useXs={true}>
-      <TextField />
+      <TextField placeholder="2 col" />
       <Grid useXs={true}>
-        <TextField />
-        <TextField />
+        <TextField placeholder="1 col" />
+        <TextField placeholder="1 col" />
       </Grid>
     </Grid>
   ))
