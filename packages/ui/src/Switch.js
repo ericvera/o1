@@ -20,7 +20,9 @@ const useStyles = makeStyles({
     flex: 1
   },
   fullWidth: {
-    width: '100%'
+    width: '100%',
+    marginLeft: 0,
+    marginRight: 0
   },
   colorSwitchBase: {
     color: getColor(Color.primaryContrast),

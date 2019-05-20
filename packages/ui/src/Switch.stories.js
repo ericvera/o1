@@ -9,14 +9,12 @@ const SwitchSample1 = () => {
   const [checked, setChecked] = useState(true)
 
   return (
-    <Container>
-      <Switch
-        checked={checked}
-        labelText="This is the label text"
-        onChange={() => setChecked(!checked)}
-        value="some-value"
-      />
-    </Container>
+    <Switch
+      checked={checked}
+      labelText="This is the label text"
+      onChange={() => setChecked(!checked)}
+      value="some-value"
+    />
   )
 }
 
