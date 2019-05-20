@@ -14,6 +14,7 @@ import Progress from './Progress'
 import Select from './Select'
 import Snackbar from './Snackbar'
 import SvgIcon from './SvgIcon'
+import Switch from './Switch'
 import Text from './Text'
 import TextField from './TextField'
 import ThemeProvider from './ThemeProvider'
@@ -35,6 +36,7 @@ export {
   Select,
   Snackbar,
   SvgIcon,
+  Switch,
   Text,
   TextField,
   ThemeProvider
