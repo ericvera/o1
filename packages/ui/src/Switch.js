@@ -3,7 +3,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Material-UI
-import FormControl from '@material-ui/core/FormControl'
+import FormGroup from '@material-ui/core/FormGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import InputLabel from '@material-ui/core/InputLabel'
 import MaterialUISwitch from '@material-ui/core/Switch'
@@ -28,6 +28,7 @@ const useStyles = makeStyles({
   },
   colorSwitchBase: {
     color: getColor(Color.primaryContrast),
+    height: 30,
 
     '&$colorChecked': {
       color: getColor(Color.brand),
@@ -65,7 +66,7 @@ const Switch = ({
   const classes = useStyles()
 
   return (
-    <FormControl className={marginClassName}>
+    <FormGroup className={marginClassName}>
       <InputLabel>{label}</InputLabel>
       <FormControlLabel
         classes={{ label: classes.flex }}
@@ -88,7 +89,7 @@ const Switch = ({
         }
         label={<Text>{text}</Text>}
       />
-    </FormControl>
+    </FormGroup>
   )
 }
 
