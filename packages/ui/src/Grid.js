@@ -79,7 +79,8 @@ const Grid = ({ useXs = false, centeredContent = true, children }) => {
 
 Grid.propTypes = exact({
   centeredContent: PropTypes.bool,
-  children: PropTypes.node
+  children: PropTypes.node,
+  useXs: PropTypes.bool
 })
 
 export default Grid
