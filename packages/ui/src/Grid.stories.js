@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react'
 import Grid from './Grid'
 import Heading from './Heading'
 import Text from './Text'
+import TextField from './TextField'
 
 storiesOf('Grid', module)
   .add('default', () => (
@@ -10,6 +11,21 @@ storiesOf('Grid', module)
       <Heading>Hi, I am a level 1 header</Heading>
       <Heading>Hi, I am a level 2 header</Heading>
       <Heading>Hi, I am a level 3 header</Heading>
+    </Grid>
+  ))
+  .add('TextFields', () => (
+    <Grid useXs={true}>
+      <TextField />
+      <Grid useXs={true}>
+        <TextField />
+        <TextField />
+      </Grid>
+    </Grid>
+  ))
+  .add('2 elements', () => (
+    <Grid>
+      <Heading>Left</Heading>
+      <Heading>Right</Heading>
     </Grid>
   ))
   .add('not centered', () => (

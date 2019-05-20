@@ -20,11 +20,30 @@ const useStyles = makeStyles({
   }
 })
 
-const Grid = ({ centeredContent = true, children, columns = '3' }) => {
+const Grid = ({ useXs = false, centeredContent = true, children }) => {
   const classes = useStyles()
 
-  if (columns != '3' || React.Children.count(children) != columns) {
-    throw Error(`[Grid] Grid only supports 3 columns at the moment`)
+  const columnCount = React.Children.count(children)
+
+  let columnSize
+
+  // Supports 2, 3, 4, 6
+  switch (columnCount) {
+    case 2:
+      columnSize = 6
+      break
+    case 3:
+      columnSize = 4
+
+      break
+    case 4:
+      columnSize = 3
+      break
+    case 6:
+      columnSize = 2
+      break
+    default:
+      throw new Error(`Grid only supports 2, 3, 4, 6 child elements.`)
   }
 
   let classNames = [classes.gridItem]
@@ -33,11 +52,23 @@ const Grid = ({ centeredContent = true, children, columns = '3' }) => {
     classNames.push(classes.centeredContent)
   }
 
+  let columnDefinitions
+
+  if (useXs) {
+    columnDefinitions = { xs: columnSize }
+  } else {
+    columnDefinitions = { sm: columnSize }
+  }
+
   return (
     <MaterialUIGrid container>
       {React.Children.map(children, child => {
         return (
-          <MaterialUIGrid item sm={4} className={classNames.join(' ')}>
+          <MaterialUIGrid
+            item
+            {...columnDefinitions}
+            className={classNames.join(' ')}
+          >
             {child}
           </MaterialUIGrid>
         )
@@ -48,8 +79,7 @@ const Grid = ({ centeredContent = true, children, columns = '3' }) => {
 
 Grid.propTypes = exact({
   centeredContent: PropTypes.bool,
-  children: PropTypes.node,
-  columns: PropTypes.oneOf(['3'])
+  children: PropTypes.node
 })
 
 export default Grid

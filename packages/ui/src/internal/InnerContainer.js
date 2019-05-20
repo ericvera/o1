@@ -43,7 +43,7 @@ const InnerContainer = ({
       alignContent="center"
       className={guttersClassName}
     >
-      <Grid item xs={12} sm={9} md={6} lg={4} className={flexClassName}>
+      <Grid item xs={12} sm={9} md={4} lg={5} className={flexClassName}>
         {children}
       </Grid>
     </Grid>
