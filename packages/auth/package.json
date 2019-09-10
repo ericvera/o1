@@ -25,5 +25,8 @@
   },
   "devDependencies": {
     "@firebase/app-types": "~0"
+  },
+  "dependencies": {
+    "lerna": "^3.13.4"
   }
 }
