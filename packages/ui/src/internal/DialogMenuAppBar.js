@@ -106,43 +106,45 @@ const DialogMenuBar = ({
           onClose={closeMenu}
           TransitionComponent={Transition}
         >
-          <BaseAppBar
-            location="top"
-            backgroundColor={smallScreenMenuBackgroundColor}
-          >
-            <AppBarButton
-              icon={
-                <>
-                  {closeMenuLogo}
-                  <KeyboardArrowUpIcon
-                    className={closeMenuIconColorClassName}
-                  />
-                </>
-              }
-              onClick={closeMenu}
-              side="left"
-            />
-          </BaseAppBar>
+          <div>
+            <BaseAppBar
+              location="top"
+              backgroundColor={smallScreenMenuBackgroundColor}
+            >
+              <AppBarButton
+                icon={
+                  <>
+                    {closeMenuLogo}
+                    <KeyboardArrowUpIcon
+                      className={closeMenuIconColorClassName}
+                    />
+                  </>
+                }
+                onClick={closeMenu}
+                side="left"
+              />
+            </BaseAppBar>
 
-          <Container disableGutters={true}>
-            <List component="nav" className={classes.dialogMenuItems}>
-              {menuItems.map(menuItem => (
-                <ListItem
-                  key={menuItem.text}
-                  onClick={menuItem.onClick}
-                  button
-                  disableGutters={false}
-                  className={classes.listItem}
-                >
-                  <ListItemText
-                    color={getColor(smallScreenLinkTextColor)}
-                    primary={menuItem.text}
-                    classes={{ primary: classes.menuItemText }}
-                  />
-                </ListItem>
-              ))}
-            </List>
-          </Container>
+            <Container disableGutters={true}>
+              <List component="nav" className={classes.dialogMenuItems}>
+                {menuItems.map(menuItem => (
+                  <ListItem
+                    key={menuItem.text}
+                    onClick={menuItem.onClick}
+                    button
+                    disableGutters={false}
+                    className={classes.listItem}
+                  >
+                    <ListItemText
+                      color={getColor(smallScreenLinkTextColor)}
+                      primary={menuItem.text}
+                      classes={{ primary: classes.menuItemText }}
+                    />
+                  </ListItem>
+                ))}
+              </List>
+            </Container>
+          </div>
         </Dialog>
       </div>
       <div className={screenSizeClasses[ScreenSize.notSmall]}>

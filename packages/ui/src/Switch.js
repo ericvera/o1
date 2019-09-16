@@ -77,9 +77,9 @@ const Switch = ({
             classes={{
               switchBase: classes.colorSwitchBase,
               checked: classes.colorChecked,
-              bar: classes.colorBar,
-              icon: classes.colorIcon,
-              iconChecked: classes.colorIconChecked
+              //bar: classes.colorBar,
+              //icon: classes.colorIcon
+              //iconChecked: classes.colorIconChecked
             }}
             disableRipple
             checked={checked}

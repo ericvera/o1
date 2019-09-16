@@ -14,11 +14,6 @@ import Text from './Text'
 import TextField from './TextField'
 
 storiesOf('Sample Layouts', module)
-  .addParameters({
-    info: {
-      disable: true
-    }
-  })
   .add('Progress screen', () => (
     <>
       <Container>

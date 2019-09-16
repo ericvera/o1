@@ -136,7 +136,7 @@ const theme = createMuiTheme({
           backgroundColor: getColor(Color.background)
         }
       },
-      fab: {
+      /*fab: {
         // Between the mobile stepper and the AppBar
         // z-index explained here https://material-ui.com/layout/basics/
         // The fact that this is needed is likely a bug in the lib
@@ -145,7 +145,7 @@ const theme = createMuiTheme({
         position: 'fixed',
         bottom: 16,
         right: 16
-      },
+      },*/
       label: {
         textTransform: 'none'
       }
@@ -246,7 +246,6 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    useNextVariants: true,
     fontFamily: [
       'Montserrat',
       'Arial',

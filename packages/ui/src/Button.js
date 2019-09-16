@@ -56,7 +56,7 @@ const getButtonColorClassName = color => {
   return color
 }
 
-const Button = ({
+export const Button = ({
   centered = true,
   children,
   color = Color.primary,
@@ -168,8 +168,8 @@ Button.propTypes = exact({
 /**
  * @type {React.ComponentType<ButtonProps>}
  */
-export const RefdButton = forwardRef((props, ref) => (
+const RefdButton = forwardRef((props, ref) => ((
   <Button {...props} forwardedRef={ref} />
-))
+)))
 
 export default RefdButton
