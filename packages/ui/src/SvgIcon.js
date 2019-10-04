@@ -35,7 +35,7 @@ const SvgIcon = ({
     <MaterialUISvgIcon
       className={[marginClassName, classes.svgIconSize].join(' ')}
       height={height}
-      nativeColor={getColor(color)}
+      htmlColor={getColor(color)}
       viewBox={viewBox}
     >
       {children}

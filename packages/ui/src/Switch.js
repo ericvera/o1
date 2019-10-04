@@ -26,31 +26,17 @@ const useStyles = makeStyles({
     marginLeft: 0,
     marginRight: 0
   },
-  colorSwitchBase: {
-    color: getColor(Color.primaryContrast),
-    height: 30,
-
-    '&$colorChecked': {
-      color: getColor(Color.brand),
-      borderStyle: 'none',
-      '& + $colorBar': {
-        backgroundColor: getColor(Color.brand)
-      }
+  switchBase: {
+    color: getColor(Color.brand),
+    '&$checked': {
+      color: getColor(Color.brand)
+    },
+    '&$checked + $track': {
+      backgroundColor: getColor(Color.brand)
     }
   },
-  colorIconChecked: {},
-  colorIcon: {
-    borderWidth: 1,
-    borderColor: getColor(Color.secondary),
-    borderStyle: 'solid',
-    '&$colorIconChecked': {
-      borderStyle: 'none',
-      borderWidth: 0,
-      borderColor: 'red'
-    }
-  },
-  colorBar: {},
-  colorChecked: {}
+  checked: {},
+  track: {}
 })
 
 const Switch = ({
@@ -75,11 +61,9 @@ const Switch = ({
         control={
           <MaterialUISwitch
             classes={{
-              switchBase: classes.colorSwitchBase,
-              checked: classes.colorChecked,
-              //bar: classes.colorBar,
-              //icon: classes.colorIcon
-              //iconChecked: classes.colorIconChecked
+              switchBase: classes.switchBase,
+              checked: classes.checked,
+              track: classes.track
             }}
             disableRipple
             checked={checked}

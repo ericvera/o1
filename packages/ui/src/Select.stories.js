@@ -38,7 +38,7 @@ storiesOf('Select', module)
       label="No label here"
       onChange={handleChange}
       options={sampleOptionsWithNoLabel}
-      value={sampleOptionsWithLabel[0].value}
+      value={sampleOptionsWithNoLabel[1].value}
     />
   ))
   .add('disabled', () => (

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Material-UI
-import Dialog from '@material-ui/core/Dialog'
+import Drawer from '@material-ui/core/Drawer'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp'
 import List from '@material-ui/core/List'
@@ -35,16 +35,15 @@ import useColorClassName from '../hooks/useColorClassName'
 import useScreenSizeStyles from '../hooks/useScreenSizeStyles'
 
 const useStyles = makeStyles({
+  fullList: {
+    width: 'auto'
+  },
   menuItemText: {
     fontSize: getFontSize(FontSizeLevel.l3),
     fontWeight: getFontWeight(FontWeight.regular)
   },
   dialogMenuItems: {
     marginTop: getSpacing(SpacingLevel.l5)
-  },
-  menuLink: {
-    justifyContent: 'flex-end',
-    paddingRight: 0
   },
   listItem: {
     paddingTop: getSpacing(SpacingLevel.l4),
@@ -100,13 +99,8 @@ const DialogMenuBar = ({
           />
         </BaseAppBar>
 
-        <Dialog
-          fullScreen
-          open={open}
-          onClose={closeMenu}
-          TransitionComponent={Transition}
-        >
-          <div>
+        <Drawer anchor="top" open={open} onClose={closeMenu}>
+          <div className={classes.fullList} role="presentation">
             <BaseAppBar
               location="top"
               backgroundColor={smallScreenMenuBackgroundColor}
@@ -145,7 +139,7 @@ const DialogMenuBar = ({
               </List>
             </Container>
           </div>
-        </Dialog>
+        </Drawer>
       </div>
       <div className={screenSizeClasses[ScreenSize.notSmall]}>
         <BaseAppBar
