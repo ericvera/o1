@@ -37,6 +37,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     paddingBottom: 0
   },
+  bottomButtons: {
+    ...theme.mixins.gutters()
+  },
   bottomMenuLastButton: {
     textAlign: 'right'
   },
@@ -106,6 +109,7 @@ const MenuAppBar = ({
               onClick={bottomLeftMenuItem.onClick}
               button
               disableGutters={false}
+              className={classes.bottomButtons}
             >
               <ListItemText primary={bottomLeftMenuItem.text} />
             </ListItem>
@@ -115,7 +119,11 @@ const MenuAppBar = ({
               key={bottomRightMenuItem.text}
               onClick={bottomRightMenuItem.onClick}
               button
-              className={classes.bottomMenuLastButton}
+              disableGutters={false}
+              className={[
+                classes.bottomMenuLastButton,
+                classes.bottomButtons
+              ].join(' ')}
             >
               <ListItemText primary={bottomRightMenuItem.text} />
             </ListItem>
