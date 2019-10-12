@@ -1,6 +1,3 @@
-// Details about the install step at https://material-ui.com/css-in-js/basics/
-import './setup'
-
 import AppBar from './AppBar'
 import Button from './Button'
 import Container from './Container'
