@@ -1,6 +1,6 @@
 {
   "name": "@o1/ui",
-  "version": "0.0.50",
+  "version": "0.0.51",
   "description": "A few React components built on top of Material-UI",
   "main": "lib/index.js",
   "module": "lib/index.js",
