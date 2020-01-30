@@ -36,7 +36,7 @@ const BaseAppBar = ({
   position = 'fixed'
 }) => {
   const colors = useContext(ColorsContext)
-  const classes = useStyles(colors)
+  const classes = useStyles(colors)()
   const colorClassName = useColorClassName(colors, null, backgroundColor)
 
   let classNames = [colorClassName]

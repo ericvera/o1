@@ -53,7 +53,7 @@ const Switch = ({
 }) => {
   const colors = useContext(ColorsContext)
   const marginClassName = useMarginStyles(marginTopLevel, marginBottomLevel)
-  const classes = useStyles(colors)
+  const classes = useStyles(colors)()
 
   return (
     <FormGroup className={marginClassName}>

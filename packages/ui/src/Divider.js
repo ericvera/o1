@@ -29,7 +29,7 @@ const Divider = ({
   marginTopLevel = SpacingLevel.l0
 }) => {
   const colors = useContext(ColorsContext)
-  const classes = useStyles(colors)
+  const classes = useStyles(colors)()
   const marginClassName = useMarginStyles(marginTopLevel, marginBottomLevel)
 
   return (
