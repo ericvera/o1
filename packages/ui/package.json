@@ -30,29 +30,29 @@
     "react-dom": "~16"
   },
   "dependencies": {
-    "@material-ui/core": "^4.4.1",
-    "@material-ui/icons": "^4.4.1",
-    "@material-ui/styles": "^4.4.1",
-    "lerna": "^3.16.4",
+    "@material-ui/core": "^4.9.0",
+    "@material-ui/icons": "^4.5.1",
+    "@material-ui/styles": "^4.9.0",
+    "lerna": "^3.20.2",
     "prop-types": "^15.7.2",
     "prop-types-exact": "^1.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "~7",
-    "@babel/core": "~7",
-    "@babel/preset-react": "~7",
-    "@storybook/addon-actions": "~5",
+    "@babel/cli": "~7.8.4",
+    "@babel/core": "~7.8.4",
+    "@babel/preset-react": "~7.8.3",
+    "@storybook/addon-actions": "~5.3.9",
     "@storybook/addon-console": "~1",
-    "@storybook/addon-links": "~5",
-    "@storybook/addon-storyshots": "~5",
-    "@storybook/addon-viewport": "~5",
-    "@storybook/addons": "~5",
-    "@storybook/react": "~5",
+    "@storybook/addon-links": "~5.3.9",
+    "@storybook/addon-storyshots": "~5.3.9",
+    "@storybook/addon-viewport": "~5.3.9",
+    "@storybook/addons": "~5.3.9",
+    "@storybook/react": "~5.3.9",
     "babel-loader": "~8",
     "babel-plugin-require-context-hook": "~1",
     "babel-plugin-transform-es2015-modules-commonjs": "~6",
-    "jest": "~24",
-    "react-test-renderer": "~16"
+    "jest": "~25.1.0",
+    "react-test-renderer": "~16.12.0"
   },
   "jest": {
     "testPathIgnorePatterns": [
