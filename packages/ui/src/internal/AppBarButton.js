@@ -1,5 +1,5 @@
 // Platform
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Material-UI
@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/styles'
 // Internal
 import EmptyIcon from './EmptyIcon'
 import MenuMinimalIcon from './MenuMinimalIcon'
+import { ColorsContext } from './ColorsContext'
 // Helpers
 import { AppBarButtonIcon, Color } from '../helpers/constants'
 import { AppBarButtonIconPropTypes, ColorPropTypes } from '../helpers/PropTypes'
@@ -24,7 +25,8 @@ const useStyles = makeStyles({
 
 const AppBarButton = ({ color = Color.primary, icon, onClick, side }) => {
   const classes = useStyles()
-  const colorClassName = useColorClassName(color)
+  const colors = useContext(ColorsContext)
+  const colorClassName = useColorClassName(colors, color)
 
   let iconElement
 

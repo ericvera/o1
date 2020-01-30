@@ -1,11 +1,12 @@
 // Framework
-import React, { forwardRef } from 'react'
+import React, { forwardRef, useContext } from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Material-UI
 import MaterialUIButton from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/styles'
 // Internal
+import { ColorsContext } from './internal/ColorsContext'
 import ProgressButton from './internal/ProgressButton'
 // Helpers
 import { ButtonVariant, Color, SpacingLevel } from './helpers/constants'
@@ -21,32 +22,33 @@ import useCenteredContentClassName from './hooks/useCenteredContentClassName'
 import useMarginStyles from './hooks/useMarginStyles'
 import useColorClassName from './hooks/useColorClassName'
 
-const useStyles = makeStyles({
-  textButton: {
-    paddingLeft: getSpacing(SpacingLevel.l2),
-    paddingRight: getSpacing(SpacingLevel.l2)
-  },
-  [Color.primary]: {
-    backgroundColor: getColor(Color.background),
-    borderColor: getColor(Color.brand),
-    color: getColor(Color.brand)
-  },
-  [Color.secondary]: {
-    backgroundColor: getColor(Color.background),
-    borderColor: getColor(Color.secondary),
-    color: getColor(Color.secondary)
-  },
-  [Color.confirmAction]: {
-    backgroundColor: getColor(Color.confirmAction),
-    borderStyle: 'none',
-    color: getColor(Color.background),
-    '&:hover': {
-      backgroundColor: getColor(Color.confirmAction),
+const useStyles = colors =>
+  makeStyles({
+    textButton: {
+      paddingLeft: getSpacing(SpacingLevel.l2),
+      paddingRight: getSpacing(SpacingLevel.l2)
+    },
+    [Color.primary]: {
+      backgroundColor: getColor(colors, Color.background),
+      borderColor: getColor(colors, Color.brand),
+      color: getColor(colors, Color.brand)
+    },
+    [Color.secondary]: {
+      backgroundColor: getColor(colors, Color.background),
+      borderColor: getColor(colors, Color.secondary),
+      color: getColor(colors, Color.secondary)
+    },
+    [Color.confirmAction]: {
+      backgroundColor: getColor(colors, Color.confirmAction),
       borderStyle: 'none',
-      color: getColor(Color.background)
+      color: getColor(colors, Color.background),
+      '&:hover': {
+        backgroundColor: getColor(colors, Color.confirmAction),
+        borderStyle: 'none',
+        color: getColor(colors, Color.background)
+      }
     }
-  }
-})
+  })
 
 const getButtonColorClassName = color => {
   if (![Color.primary, Color.secondary, Color.confirmAction].includes(color)) {
@@ -69,10 +71,11 @@ export const Button = ({
   showProgress = false,
   variant = ButtonVariant.flat
 }) => {
-  const classes = useStyles()
+  const colors = useContext(ColorsContext)
+  const classes = useStyles(colors)
   const marginClassName = useMarginStyles(marginTopLevel, marginBottomLevel)
   const centeredContentClassName = useCenteredContentClassName()
-  const colorClassName = useColorClassName(color)
+  const colorClassName = useColorClassName(colors, color)
 
   let classNames = [marginClassName]
 
@@ -168,8 +171,8 @@ Button.propTypes = exact({
 /**
  * @type {React.ComponentType<ButtonProps>}
  */
-const RefdButton = forwardRef((props, ref) => ((
+const RefdButton = forwardRef((props, ref) => (
   <Button {...props} forwardedRef={ref} />
-)))
+))
 
 export default RefdButton

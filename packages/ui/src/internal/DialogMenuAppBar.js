@@ -1,5 +1,5 @@
 // Platform
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Material-UI
@@ -17,6 +17,7 @@ import Button from '../Button'
 import AppBarButton from './AppBarButton'
 import BaseAppBar from './BaseAppBar'
 import Container from '../Container'
+import { ColorsContext } from './ColorsContext'
 // Helpers
 import {
   Color,
@@ -73,8 +74,16 @@ const DialogMenuBar = ({
   const screenSizeClasses = useScreenSizeStyles()
   const [open, setOpen] = useState(false)
 
-  const openMenuIconColorClassName = useColorClassName(openMenuIconColor)
-  const closeMenuIconColorClassName = useColorClassName(closeMenuIconColor)
+  const colors = useContext(ColorsContext)
+
+  const openMenuIconColorClassName = useColorClassName(
+    colors,
+    openMenuIconColor
+  )
+  const closeMenuIconColorClassName = useColorClassName(
+    colors,
+    closeMenuIconColor
+  )
 
   const closeMenu = () => setOpen(false)
   const openMenu = () => setOpen(true)
@@ -130,7 +139,7 @@ const DialogMenuBar = ({
                     className={classes.listItem}
                   >
                     <ListItemText
-                      color={getColor(smallScreenLinkTextColor)}
+                      color={getColor(colors, smallScreenLinkTextColor)}
                       primary={menuItem.text}
                       classes={{ primary: classes.menuItemText }}
                     />

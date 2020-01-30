@@ -1,9 +1,11 @@
 // Framework
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Material-UI
 import { makeStyles } from '@material-ui/styles'
+// Internal
+import { ColorsContext } from './ColorsContext'
 // Helpers
 import { Color, ScreenSize, SpacingLevel } from '../helpers/constants'
 import {
@@ -51,10 +53,15 @@ const OuterContainer = ({
   screenSize = ScreenSize.all
 }) => {
   const classes = useStyles(backgroundImage)
+  const colors = useContext(ColorsContext)
   const marginsClassName = useMarginStyles(marginTopLevel, marginBottomLevel)
   const paddingClassName = usePaddingStyles(paddingTopLevel, paddingBottomLevel)
   const screenSizeClasses = useScreenSizeStyles()
-  const backgroundColorClassName = useColorClassName(null, backgroundColor)
+  const backgroundColorClassName = useColorClassName(
+    colors,
+    null,
+    backgroundColor
+  )
 
   let classNames = [
     fullPage ? classes.mainFullHeight : classes.main,
