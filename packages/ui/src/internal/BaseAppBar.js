@@ -1,5 +1,5 @@
 // Framework
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Material-UI
@@ -8,6 +8,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import { makeStyles } from '@material-ui/styles'
 // Internal
 import InnerContainer from './InnerContainer'
+import { ColorsContext } from './ColorsContext'
 // Helpers
 import getColor from '../helpers/getColor'
 import { Color } from '../helpers/constants'
@@ -15,16 +16,17 @@ import { ColorPropTypes } from '../helpers/PropTypes'
 // Hooks
 import useColorClassName from '../hooks/useColorClassName'
 
-const useStyles = makeStyles({
-  bottom: {
-    top: 'auto',
-    bottom: 0,
-    padding: 0,
-    borderTopStyle: 'solid',
-    borderTopColor: getColor(Color.primaryDisabled),
-    borderTopWidth: 1
-  }
-})
+const useStyles = colors =>
+  makeStyles({
+    bottom: {
+      top: 'auto',
+      bottom: 0,
+      padding: 0,
+      borderTopStyle: 'solid',
+      borderTopColor: getColor(colors, Color.primaryDisabled),
+      borderTopWidth: 1
+    }
+  })
 
 const BaseAppBar = ({
   location = 'top',
@@ -33,8 +35,9 @@ const BaseAppBar = ({
   backgroundColor = Color.background,
   position = 'fixed'
 }) => {
-  const classes = useStyles()
-  const colorClassName = useColorClassName(null, backgroundColor)
+  const colors = useContext(ColorsContext)
+  const classes = useStyles(colors)()
+  const colorClassName = useColorClassName(colors, null, backgroundColor)
 
   let classNames = [colorClassName]
 

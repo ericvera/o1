@@ -1,10 +1,12 @@
 // Platform
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Material-UI
 import MaterialUISvgIcon from '@material-ui/core/SvgIcon'
 import { makeStyles } from '@material-ui/styles'
+// Internal
+import { ColorsContext } from './internal/ColorsContext'
 // Helpers
 import { Color, SpacingLevel } from './helpers/constants'
 import { SpacingLevelPropTypes, ColorPropTypes } from './helpers/PropTypes'
@@ -29,13 +31,14 @@ const SvgIcon = ({
   viewBox
 }) => {
   const marginClassName = useMarginStyles(marginTopLevel, marginBottomLevel)
+  const colors = useContext(ColorsContext)
   const classes = useStyles()
 
   return (
     <MaterialUISvgIcon
       className={[marginClassName, classes.svgIconSize].join(' ')}
       height={height}
-      htmlColor={getColor(color)}
+      htmlColor={getColor(colors, color)}
       viewBox={viewBox}
     >
       {children}

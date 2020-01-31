@@ -1,5 +1,5 @@
 // Platform
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Material-UI
@@ -7,6 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import { makeStyles } from '@material-ui/styles'
 // Internal
 import InnerContainer from './internal/InnerContainer'
+import { ColorsContext } from './internal/ColorsContext'
 // Helpers
 import { Color, SpacingLevel } from './helpers/constants'
 import getColor from './helpers/getColor'
@@ -14,26 +15,28 @@ import getColor from './helpers/getColor'
 import useMarginStyles from './hooks/useMarginStyles'
 import { SpacingLevelPropTypes } from './helpers/PropTypes'
 
-const useStyles = makeStyles({
-  footer: {
-    backgroundColor: getColor(Color.background),
-    flexShrink: 0
-  },
-  toolbar: {
-    width: '100%',
-    justifyContent: 'space-between',
-    borderTopStyle: 'solid',
-    borderTopWidth: 1,
-    borderTopColor: getColor(Color.secondary)
-  }
-})
+const useStyles = colors =>
+  makeStyles({
+    footer: {
+      backgroundColor: getColor(colors, Color.background),
+      flexShrink: 0
+    },
+    toolbar: {
+      width: '100%',
+      justifyContent: 'space-between',
+      borderTopStyle: 'solid',
+      borderTopWidth: 1,
+      borderTopColor: getColor(colors, Color.secondary)
+    }
+  })
 
 const Footer = ({
   children,
   marginBottomLevel = SpacingLevel.l0,
   marginTopLevel = SpacingLevel.l0
 }) => {
-  const classes = useStyles()
+  const colors = useContext(ColorsContext)
+  const classes = useStyles(colors)()
   const marginClassName = useMarginStyles(marginTopLevel, marginBottomLevel)
 
   return (

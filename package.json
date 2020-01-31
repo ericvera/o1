@@ -4,6 +4,11 @@
   "devDependencies": {
     "lerna": "^3.13.4"
   },
+  "scripts": {
+    "ci": "lerna bootstrap",
+    "test": "lerna run test",
+    "publish-all": "lerna version patch --yes && lerna publish"
+  },
   "version": "0.0.1",
   "main": "index.js",
   "author": "Eric Vera <eric.vera+code@gmail.com>",

@@ -1,9 +1,11 @@
 // Framework
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Material-UI
 import Typography from '@material-ui/core/Typography'
+// Internal
+import { ColorsContext } from './internal/ColorsContext'
 // Helpers
 import { HeadingLevel, SpacingLevel, Color } from './helpers/constants'
 import {
@@ -32,7 +34,8 @@ const Heading = ({
   children
 }) => {
   const marginClassName = useMarginStyles(marginTopLevel, marginBottomLevel)
-  const colorClassName = useColorClassName(color)
+  const colors = useContext(ColorsContext)
+  const colorClassName = useColorClassName(colors, color)
 
   return (
     <Typography

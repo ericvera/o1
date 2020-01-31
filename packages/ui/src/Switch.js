@@ -1,5 +1,5 @@
 // Platform
-import React from 'react'
+import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Material-UI
@@ -10,6 +10,8 @@ import MaterialUISwitch from '@material-ui/core/Switch'
 import { makeStyles } from '@material-ui/styles'
 // Components
 import Text from './Text'
+// Internal
+import { ColorsContext } from './internal/ColorsContext'
 // Helpers
 import { Color, SpacingLevel } from './helpers/constants'
 import { ColorPropTypes, SpacingLevelPropTypes } from './helpers/PropTypes'
@@ -17,27 +19,28 @@ import getColor from './helpers/getColor'
 // Hooks
 import useMarginStyles from './hooks/useMarginStyles'
 
-const useStyles = makeStyles({
-  flex: {
-    flex: 1
-  },
-  fullWidth: {
-    width: '100%',
-    marginLeft: 0,
-    marginRight: 0
-  },
-  switchBase: {
-    color: getColor(Color.brand),
-    '&$checked': {
-      color: getColor(Color.brand)
+const useStyles = colors =>
+  makeStyles({
+    flex: {
+      flex: 1
     },
-    '&$checked + $track': {
-      backgroundColor: getColor(Color.brand)
-    }
-  },
-  checked: {},
-  track: {}
-})
+    fullWidth: {
+      width: '100%',
+      marginLeft: 0,
+      marginRight: 0
+    },
+    switchBase: {
+      color: getColor(colors, Color.brand),
+      '&$checked': {
+        color: getColor(colors, Color.brand)
+      },
+      '&$checked + $track': {
+        backgroundColor: getColor(colors, Color.brand)
+      }
+    },
+    checked: {},
+    track: {}
+  })
 
 const Switch = ({
   checked,
@@ -48,8 +51,9 @@ const Switch = ({
   text,
   value
 }) => {
+  const colors = useContext(ColorsContext)
   const marginClassName = useMarginStyles(marginTopLevel, marginBottomLevel)
-  const classes = useStyles()
+  const classes = useStyles(colors)()
 
   return (
     <FormGroup className={marginClassName}>

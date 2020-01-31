@@ -1,5 +1,6 @@
 import AppBar from './AppBar'
 import Button from './Button'
+import { Color, HeadingLevel, SpacingLevel } from './helpers/constants'
 import Container from './Container'
 import CustomInputContainer from './CustomInputContainer'
 import Divider from './Divider'
@@ -23,17 +24,20 @@ export {
   makeStyles,
   AppBar,
   Button,
+  Color,
   Container,
   CustomInputContainer,
   Divider,
   Footer,
   Grid,
   Heading,
+  HeadingLevel,
   List,
   ListItem,
   Progress,
   Select,
   Snackbar,
+  SpacingLevel,
   SvgIcon,
   Switch,
   Text,
