@@ -5,9 +5,10 @@
     "lerna": "^3.13.4"
   },
   "scripts": {
-    "ci": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap",
     "test": "lerna run test",
-    "publish-all": "lerna version patch --yes && lerna publish"
+    "patch": "lerna version patch --yes",
+    "publish-all": "lerna publish --yes"
   },
   "version": "0.0.1",
   "main": "index.js",
