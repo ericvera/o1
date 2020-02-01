@@ -13,6 +13,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
+      - run: yarn
       - run: yarn bootstrap
       - run: yarn test
 
@@ -26,6 +27,7 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: yarn
+      - run: yarn bootstrap
       - name: Configure CI Git User
         run: |
           git config --global user.email octobot@github.com
