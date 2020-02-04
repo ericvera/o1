@@ -8,7 +8,7 @@
     "bootstrap": "lerna bootstrap",
     "test": "lerna run test",
     "patch": "lerna version patch --yes",
-    "publish-all": "lerna publish from-package"
+    "publish-all": "lerna publish from-package --yes"
   },
   "version": "0.0.1",
   "main": "index.js",
