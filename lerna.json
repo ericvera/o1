@@ -1,8 +1,7 @@
 {
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["packages/*"],
   "version": "0.0.56",
   "npmClient": "yarn",
+  "npmClientArgs": ["----frozen-lockfile"],
   "useWorkspaces": true
 }
