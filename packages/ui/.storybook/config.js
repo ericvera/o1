@@ -36,8 +36,7 @@ const FullHeightDecorator = storyFn => (
     style={{
       display: 'flex',
       flexDirection: 'column',
-      minHeight: '100vh',
-      backgroundColor: '#fff'
+      minHeight: '100vh'
     }}
   >
     {storyFn()}

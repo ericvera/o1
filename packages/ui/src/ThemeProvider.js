@@ -97,14 +97,6 @@ const theme = colors =>
       MuiAppBar: {
         colorPrimary: { backgroundColor: getColor(colors, Color.background) }
       },
-      MuiIconButton: {
-        root: {
-          color: getColor(colors, Color.primary),
-          '&:hover': {
-            backgroundColor: getColor(colors, Color.transparent)
-          }
-        }
-      },
       MuiButtonBase: {
         root: {
           '&:hover': {
@@ -180,6 +172,14 @@ const theme = colors =>
           color: getColor(colors, Color.primary)
         }
       },
+      MuiIconButton: {
+        root: {
+          color: getColor(colors, Color.primary),
+          '&:hover': {
+            backgroundColor: getColor(colors, Color.transparent)
+          }
+        }
+      },
       MuiInput: {
         root: {
           borderRadius: 4,
@@ -245,6 +245,12 @@ const theme = colors =>
         root: {
           overflowWrap: 'break-word'
         }
+      }
+    },
+    palette: {
+      background: {
+        paper: getColor(colors, Color.background),
+        default: getColor(colors, Color.background)
       }
     },
     typography: {
