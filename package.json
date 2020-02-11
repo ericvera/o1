@@ -6,6 +6,7 @@
   },
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "bootstrap-production": "lerna bootstrap -- --production",
     "test": "lerna run test",
     "patch": "lerna version patch --yes",
     "publish-all": "lerna publish from-package --yes"
