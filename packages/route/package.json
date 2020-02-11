@@ -24,7 +24,7 @@
     "react-router-dom",
     "react"
   ],
-  "devDependencies": {
+  "dependencies": {
     "@babel/cli": "~7",
     "@babel/core": "~7",
     "@babel/preset-react": "~7"
