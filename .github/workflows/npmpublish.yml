@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12
-      - run: yarn
+      - run: yarn --frozen-lockfile
       - run: yarn bootstrap
       - run: yarn test
 
@@ -26,7 +26,7 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: yarn
+      - run: yarn --frozen-lockfile
       - run: yarn bootstrap
       - name: Configure CI Git User
         run: |
