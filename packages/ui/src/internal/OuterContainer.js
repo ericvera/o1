@@ -23,7 +23,8 @@ const useStyles = backgroundImage =>
   makeStyles(theme => ({
     mainFullHeight: {
       flex: '1 0 auto',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      minHeight: '100vh'
     },
     main: {
       flexGrow: 1
