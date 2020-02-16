@@ -39,7 +39,10 @@ const useStyles = colors =>
       }
     },
     checked: {},
-    track: {}
+    track: {
+      backgroundColor: getColor(colors, Color.inputBackground),
+      opacity: 0.9
+    }
   })
 
 const Switch = ({

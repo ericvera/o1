@@ -9,7 +9,9 @@ export const defaultColorValues = {
   [Color.secondary]: '#777777',
   [Color.confirmAction]: '#FA4747',
   [Color.inputBackground]: '#E3FFF5',
+  [Color.inputText]: '#2E2E2E',
   [Color.inputBackgroundDisabled]: '#F7F7F7',
+  [Color.inputTextDisabled]: '#B7B7B7',
   [Color.background]: '#FFFFFFDD',
   [Color.transparent]: 'transparent'
 }

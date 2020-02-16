@@ -28,7 +28,9 @@ export const Color = {
   secondary: 'secondary',
   confirmAction: 'confirm-action',
   inputBackground: 'input-background',
+  inputText: 'input-text',
   inputBackgroundDisabled: 'input-background-disabled',
+  inputTextDisabled: 'input-text-disabled',
   background: 'background',
   transparent: 'transparent'
 }

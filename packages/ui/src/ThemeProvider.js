@@ -183,10 +183,10 @@ const theme = colors =>
       MuiInput: {
         root: {
           borderRadius: 4,
-          color: getColor(colors, Color.primary),
+          color: getColor(colors, Color.inputText),
           backgroundColor: getColor(colors, Color.inputBackground),
           '&$disabled': {
-            color: getColor(colors, Color.primaryDisabled),
+            color: getColor(colors, Color.inputTextDisabled),
             backgroundColor: getColor(colors, Color.inputBackgroundDisabled)
           }
         }
