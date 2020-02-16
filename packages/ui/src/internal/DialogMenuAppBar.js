@@ -128,7 +128,10 @@ const DialogMenuBar = ({
               />
             </BaseAppBar>
 
-            <Container disableGutters={true}>
+            <Container
+              disableGutters={true}
+              backgroundColor={smallScreenMenuBackgroundColor}
+            >
               <List component="nav" className={classes.dialogMenuItems}>
                 {menuItems.map(menuItem => (
                   <ListItem

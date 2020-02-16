@@ -44,6 +44,7 @@ storiesOf('AppBar', module)
     <div>
       <AppBar
         variant="dialog-menu"
+        smallScreenMenuBackgroundColor="brand"
         openMenuLogo={<HomeIcon />}
         closeMenuLogo={<HomeIcon />}
         logo={<HomeIcon />}
