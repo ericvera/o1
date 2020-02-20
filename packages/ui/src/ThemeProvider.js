@@ -116,6 +116,7 @@ const theme = colors =>
             backgroundColor: getColor(colors, Color.transparent)
           },
           '&$disabled': {
+            color: getColor(colors, Color.primaryDisabled),
             backgroundColor: getColor(colors, Color.transparent)
           }
         },
@@ -127,6 +128,10 @@ const theme = colors =>
           color: getColor(colors, Color.brand),
           //fontWeight: getFontWeight(FontWeight.regular),
           '&:hover': {
+            backgroundColor: getColor(colors, Color.background)
+          },
+          '&$disabled': {
+            color: getColor(colors, Color.primaryDisabled),
             backgroundColor: getColor(colors, Color.background)
           }
         },
