@@ -26,7 +26,8 @@ const useStyles = makeStyles({
     width: '100%'
   },
   centeredContent: {
-    textAlign: 'center'
+    textAlign: 'center',
+    justifyContent: 'space-around'
   },
   firstItem: {
     paddingLeft: 0

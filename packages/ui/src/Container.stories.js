@@ -36,3 +36,17 @@ storiesOf('Container', module)
       <Heading>Hi, My background should have the brand color</Heading>
     </Container>
   ))
+  .add('content aligned to middle', () => (
+    <Container>
+      <Container
+        fullPage={false}
+        centeredContent={true}
+        centered={false}
+        hasAppBar={false}
+        hasBottomBar={false}
+        marginTopLevel="l7"
+      >
+        <Heading>Hi, My background should have the brand color</Heading>
+      </Container>
+    </Container>
+  ))
