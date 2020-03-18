@@ -45,7 +45,21 @@ const shadowLevels = [
   'none'
 ]
 
-const theme = colors =>
+const defaultFontFamily = [
+  'Montserrat',
+  'Arial',
+  '-apple-system',
+  'BlinkMacSystemFont',
+  '"Segoe UI"',
+  'Roboto',
+  '"Helvetica Neue"',
+  'sans-serif',
+  '"Apple Color Emoji"',
+  '"Segoe UI Emoji"',
+  '"Segoe UI Symbol"'
+]
+
+const theme = (colors, fontFamily = defaultFontFamily) =>
   createMuiTheme({
     // NOTE: shadows uses 25 levels of shadows. Setting
     //  them all to avoid the warning and disable them all.
@@ -259,19 +273,7 @@ const theme = colors =>
       }
     },
     typography: {
-      fontFamily: [
-        'Montserrat',
-        'Arial',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"'
-      ].join(','),
+      fontFamily: fontFamily.join(','),
       h1: {
         fontSize: getFontSize(FontSizeLevel.l4),
         color: getColor(colors, Color.primary),
@@ -309,17 +311,17 @@ const theme = colors =>
     }
   })
 
-const ThemeProvider = ({ children, colors }) => (
+const ThemeProvider = ({ children, colors, fontFamily }) => (
   <ColorsContext.Provider value={Object.assign({}, defaultColorValues, colors)}>
-    <ThemeProviderBase>{children}</ThemeProviderBase>
+    <ThemeProviderBase fontFamily={fontFamily}>{children}</ThemeProviderBase>
   </ColorsContext.Provider>
 )
 
-const ThemeProviderBase = ({ children }) => {
+const ThemeProviderBase = ({ children, fontFamily }) => {
   const colors = useContext(ColorsContext)
 
   return (
-    <MaterialUIThemeProvider theme={theme(colors)}>
+    <MaterialUIThemeProvider theme={theme(colors, fontFamily)}>
       <CssBaseline />
       {children}
     </MaterialUIThemeProvider>
@@ -328,7 +330,8 @@ const ThemeProviderBase = ({ children }) => {
 
 ThemeProvider.propTypes = exact({
   children: PropTypes.node,
-  colors: PropTypes.object
+  colors: PropTypes.object,
+  fontFamily: PropTypes.arrayOf(PropTypes.string)
 })
 
 export default ThemeProvider
