@@ -25,9 +25,11 @@ const Container = ({
   children,
   className,
   disableGutters = false,
+  footer = null,
   fullPage = true,
   hasAppBar = true,
   hasBottomBar = true,
+  header = null,
   marginBottomLevel = SpacingLevel.l0,
   marginTopLevel = SpacingLevel.l0,
   paddingBottomLevel = SpacingLevel.l0,
@@ -54,6 +56,8 @@ const Container = ({
       paddingTopLevel={paddingTopLevel}
       screenSize={screenSize}
     >
+      {/* A way to add a header to the container */}
+      {header}
       {/* Hack to occupy the needed space as Toolbar resizes based on screen size */}
       {hasAppBar ? <Toolbar /> : null}
       <InnerContainer centered={centered} disableGutters={disableGutters}>
@@ -61,6 +65,8 @@ const Container = ({
       </InnerContainer>
       {/* Hack to occupy the needed space as Toolbar resizes based on screen size */}
       {hasBottomBar ? <Toolbar /> : null}
+      {/* A way to add a footer to the container */}
+      {footer}
     </OuterContainer>
   )
 }
@@ -73,9 +79,11 @@ Container.propTypes = exact({
   children: PropTypes.node,
   className: PropTypes.string,
   disableGutters: PropTypes.bool,
+  footer: PropTypes.element,
   fullPage: PropTypes.bool,
   hasAppBar: PropTypes.bool,
   hasBottomBar: PropTypes.bool,
+  header: PropTypes.element,
   marginBottomLevel: SpacingLevelPropTypes,
   marginTopLevel: SpacingLevelPropTypes,
   paddingBottomLevel: SpacingLevelPropTypes,
