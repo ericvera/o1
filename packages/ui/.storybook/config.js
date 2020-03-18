@@ -21,9 +21,15 @@ configure(loadStories, module)
 const ThemeDecorator = storyFn => (
   <ThemeProvider
     colors={{
+      [Color.background]: '#1F1F1F',
       [Color.brand]: '#FF8B36',
-      [Color.background]: '#171717',
-      [Color.primary]: '#ffffff'
+      [Color.confirmAction]: '#FA4747',
+      [Color.inputBackground]: '#FFFFFF',
+      [Color.inputBackgroundDisabled]: '#F7F7F7',
+      [Color.primary]: '#FFFFFF',
+      [Color.primaryContrast]: '#1F1F1F',
+      [Color.primaryDisabled]: '#676767',
+      [Color.secondary]: '#B2B2B2'
     }}
   >
     {storyFn()}

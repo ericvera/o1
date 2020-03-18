@@ -18,6 +18,8 @@ import Text from './Text'
 import TextField from './TextField'
 import ThemeProvider from './ThemeProvider'
 // Export directly from Material-UI
+import * as MaterialUI from '@material-ui/core'
+import * as MaterialUIIcons from '@material-ui/icons'
 import { makeStyles } from '@material-ui/styles'
 
 export {
@@ -34,6 +36,8 @@ export {
   HeadingLevel,
   List,
   ListItem,
+  MaterialUI,
+  MaterialUIIcons,
   Progress,
   Select,
   Snackbar,

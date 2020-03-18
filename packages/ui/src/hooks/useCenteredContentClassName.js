@@ -4,7 +4,7 @@ const useStyles = makeStyles({
   centeredContent: {
     textAlign: 'center',
     width: '100%',
-    justifyContent: 'space-around'
+    justifyContent: 'space-between'
   }
 })
 
