@@ -57,7 +57,7 @@ const Footer = ({
   return (
     <footer className={footerClassNames.join(' ')}>
       <InnerContainer flex={true} centered={false} disableGutters={fixed}>
-        <Toolbar className={classes.toolbar} disableGutters={true}>
+        <Toolbar className={classes.toolbar} disableGutters={!fixed}>
           {children}
         </Toolbar>
       </InnerContainer>
