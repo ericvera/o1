@@ -25,6 +25,7 @@ const useStyles = makeStyles({
 const SvgIcon = ({
   children,
   color = Color.primary,
+  classes,
   height = 24,
   marginBottomLevel = SpacingLevel.l0,
   marginTopLevel = SpacingLevel.l0,
@@ -32,14 +33,15 @@ const SvgIcon = ({
 }) => {
   const marginClassName = useMarginStyles(marginTopLevel, marginBottomLevel)
   const colors = useContext(ColorsContext)
-  const classes = useStyles()
+  const classesNames = useStyles()
 
   return (
     <MaterialUISvgIcon
-      className={[marginClassName, classes.svgIconSize].join(' ')}
+      className={[marginClassName, classesNames.svgIconSize].join(' ')}
       height={height}
       htmlColor={getColor(colors, color)}
       viewBox={viewBox}
+      classes={classes}
     >
       {children}
     </MaterialUISvgIcon>
@@ -49,6 +51,7 @@ const SvgIcon = ({
 SvgIcon.propTypes = exact({
   children: PropTypes.node,
   color: ColorPropTypes,
+  classes: PropTypes.object,
   height: PropTypes.number,
   marginBottomLevel: SpacingLevelPropTypes,
   marginTopLevel: SpacingLevelPropTypes,
