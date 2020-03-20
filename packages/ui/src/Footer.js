@@ -21,6 +21,13 @@ const useStyles = colors =>
       backgroundColor: getColor(colors, Color.background),
       flexShrink: 0
     },
+    fixed: {
+      position: 'fixed',
+      left: 0,
+      bottom: 0,
+      height: 68,
+      width: '100%'
+    },
     toolbar: {
       width: '100%',
       justifyContent: 'space-between',
@@ -32,6 +39,7 @@ const useStyles = colors =>
 
 const Footer = ({
   children,
+  fixed = false,
   marginBottomLevel = SpacingLevel.l0,
   marginTopLevel = SpacingLevel.l0
 }) => {
@@ -39,8 +47,14 @@ const Footer = ({
   const classes = useStyles(colors)()
   const marginClassName = useMarginStyles(marginTopLevel, marginBottomLevel)
 
+  let footerClassNames = [classes.footer, marginClassName]
+
+  if (fixed) {
+    footerClassNames.push(classes.fixed)
+  }
+
   return (
-    <footer className={[classes.footer, marginClassName].join(' ')}>
+    <footer className={footerClassNames.join(' ')}>
       <InnerContainer flex={true} centered={false}>
         <Toolbar className={classes.toolbar} disableGutters={true}>
           {children}
@@ -52,6 +66,7 @@ const Footer = ({
 
 Footer.propTypes = exact({
   children: PropTypes.node,
+  fixed: PropTypes.bool,
   marginBottomLevel: SpacingLevelPropTypes,
   marginTopLevel: SpacingLevelPropTypes
 })

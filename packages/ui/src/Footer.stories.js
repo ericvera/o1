@@ -38,3 +38,25 @@ storiesOf('Footer', module)
       </Footer>
     </>
   ))
+  .add('fixed', () => (
+    <>
+      <Container>
+        <Heading>Hi, I am a level 1 header</Heading>
+        <Heading level="l2">Hi, I am a level 2 header</Heading>
+        <Heading level="l3">Hi, I am a level 3 header</Heading>
+        <Heading level="l3">Hi, I am a level 3 header</Heading>
+        <Heading level="l3">Hi, I am a level 3 header</Heading>
+        <Heading level="l3">Hi, I am a level 3 header</Heading>
+        <Heading level="l3">Hi, I am a level 3 header</Heading>
+        <Heading level="l3">Hi, I am a level 3 header</Heading>
+        <Heading level="l3">Hi, I am a level 3 header</Heading>
+        <Heading level="l3">Hi, I am a level 3 header</Heading>
+      </Container>
+      <Footer fixed={true}>
+        <Text>Some text</Text>
+        <div>
+          <Button onClick={() => action('pressed')}>Button text</Button>
+        </div>
+      </Footer>
+    </>
+  ))
