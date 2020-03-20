@@ -67,6 +67,7 @@ const getButtonColorClassName = color => {
 export const Button = ({
   centered = true,
   children,
+  className,
   color = Color.primary,
   delay = undefined,
   forwardedRef = undefined,
@@ -84,7 +85,7 @@ export const Button = ({
   const centeredContentClassName = useCenteredContentClassName()
   const colorClassName = useColorClassName(colors, color)
 
-  let classNames = [marginClassName]
+  let classNames = [className, marginClassName]
 
   let button
 
@@ -149,6 +150,7 @@ export const Button = ({
 Button.propTypes = exact({
   centered: PropTypes.bool,
   children: PropTypes.node,
+  className: PropTypes.string,
   color: ColorPropTypes,
   forwardedRef: PropTypes.object,
   fullWidth: PropTypes.bool,
@@ -166,6 +168,7 @@ Button.propTypes = exact({
  * @typedef {Object} ButtonProps
  * @property {boolean} [centered]
  * @property {string} children
+ * @property {string} [className]
  * @property {string} [color]
  * @property {number} [delay]
  * @property {React.Ref<any>} [forwardedRef]
