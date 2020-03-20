@@ -20,6 +20,12 @@ export const ButtonVariant = {
   text: 'text'
 }
 
+export const ButtonSize = {
+  small: 'small',
+  medium: 'medium',
+  large: 'large'
+}
+
 export const Color = {
   brand: 'brand',
   primary: 'primary',

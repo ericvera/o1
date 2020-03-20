@@ -9,8 +9,14 @@ import { makeStyles } from '@material-ui/styles'
 import { ColorsContext } from './internal/ColorsContext'
 import ProgressButton from './internal/ProgressButton'
 // Helpers
-import { ButtonVariant, Color, SpacingLevel } from './helpers/constants'
 import {
+  ButtonVariant,
+  Color,
+  SpacingLevel,
+  ButtonSize
+} from './helpers/constants'
+import {
+  ButtonSizePropTypes,
   ButtonVariantPropTypes,
   ColorPropTypes,
   SpacingLevelPropTypes
@@ -68,6 +74,7 @@ export const Button = ({
   marginBottomLevel = SpacingLevel.l0,
   marginTopLevel = SpacingLevel.l0,
   onClick,
+  size = ButtonSize.large,
   showProgress = false,
   variant = ButtonVariant.flat
 }) => {
@@ -89,6 +96,7 @@ export const Button = ({
           className={classNames.join(' ')}
           fullWidth={fullWidth}
           onClick={onClick}
+          size={size}
         >
           {children}
         </MaterialUIButton>
@@ -121,6 +129,7 @@ export const Button = ({
           fullWidth={fullWidth}
           onClick={onClick}
           variant="text"
+          size={size}
         >
           {children}
         </MaterialUIButton>
@@ -146,6 +155,7 @@ Button.propTypes = exact({
   marginBottomLevel: SpacingLevelPropTypes,
   marginTopLevel: SpacingLevelPropTypes,
   onClick: PropTypes.func,
+  size: ButtonSizePropTypes,
   variant: ButtonVariantPropTypes,
   /** Delay in seconds before the button can be pressed */
   delay: PropTypes.number,
@@ -160,6 +170,7 @@ Button.propTypes = exact({
  * @property {number} [delay]
  * @property {React.Ref<any>} [forwardedRef]
  * @property {boolean} [fullWidth]
+ * @property {string} [size]
  * @property {string} [marginBottomLevel]
  * @property {string} [marginTopLevel]
  * @property {function} onClick

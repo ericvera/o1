@@ -75,7 +75,6 @@ const theme = (colors, fontFamily = defaultFontFamily) =>
       },
       MuiButton: {
         variant: 'contained',
-        size: 'large',
         disableFocusRipple: true,
         disableTouchRipple: true
       },
@@ -303,7 +302,6 @@ const theme = (colors, fontFamily = defaultFontFamily) =>
         lineHeight: 1.3
       },
       button: {
-        fontSize: getFontSize(FontSizeLevel.l1),
         fontWeight: getFontWeight(FontWeight.regular)
       },
       fontWeightRegular: getFontWeight(FontWeight.regular),

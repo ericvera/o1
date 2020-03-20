@@ -62,6 +62,20 @@ storiesOf('Button', module)
   .add('primary (default)', () => (
     <Button onClick={action('button pressed')}>Press me</Button>
   ))
+  .add('primary different sizes', () => (
+    <div>
+      <Button onClick={action('button pressed')}>Default</Button>
+      <Button onClick={action('button pressed')} size="small">
+        TEXT
+      </Button>
+      <Button onClick={action('button pressed')} size="medium">
+        TEXT
+      </Button>
+      <Button onClick={action('button pressed')} size="large">
+        TEXT
+      </Button>
+    </div>
+  ))
   .add('primary - not centered', () => (
     <Button centered={false} onClick={action('button pressed')}>
       Press me
