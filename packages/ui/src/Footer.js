@@ -25,6 +25,7 @@ const useStyles = colors =>
       position: 'fixed',
       left: 0,
       bottom: 0,
+      // TODO: Find a way to fix this
       height: 68,
       width: '100%'
     },
