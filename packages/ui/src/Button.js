@@ -64,13 +64,18 @@ const getButtonColorClassName = color => {
   return color
 }
 
+/**
+ *
+ * @param {ButtonProps} param0
+ */
 export const Button = ({
+  autoFocus,
   centered = true,
   children,
   className,
   color = Color.primary,
-  delay = undefined,
-  forwardedRef = undefined,
+  delay,
+  forwardedRef,
   fullWidth = false,
   marginBottomLevel = SpacingLevel.l0,
   marginTopLevel = SpacingLevel.l0,
@@ -94,6 +99,7 @@ export const Button = ({
       classNames.push(classes[getButtonColorClassName(color)])
       button = (
         <MaterialUIButton
+          autoFocus={autoFocus}
           className={classNames.join(' ')}
           fullWidth={fullWidth}
           onClick={onClick}
@@ -107,6 +113,7 @@ export const Button = ({
       classNames.push(classes[getButtonColorClassName(color)])
       button = (
         <ProgressButton
+          autoFocus={autoFocus}
           ref={forwardedRef}
           delay={delay}
           className={classNames.join(' ')}
@@ -123,6 +130,7 @@ export const Button = ({
 
       button = (
         <MaterialUIButton
+          autoFocus={autoFocus}
           className={classNames.join(' ')}
           classes={{
             text: colorClassName
@@ -148,6 +156,7 @@ export const Button = ({
 }
 
 Button.propTypes = exact({
+  autoFocus: PropTypes.bool,
   centered: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
@@ -166,6 +175,7 @@ Button.propTypes = exact({
 
 /**
  * @typedef {Object} ButtonProps
+ * @property {boolean} [autoFocus]
  * @property {boolean} [centered]
  * @property {string} children
  * @property {string} [className]
@@ -173,7 +183,7 @@ Button.propTypes = exact({
  * @property {number} [delay]
  * @property {React.Ref<any>} [forwardedRef]
  * @property {boolean} [fullWidth]
- * @property {string} [size]
+ * @property {'small'|'medium'|'large'|undefined} [size]
  * @property {string} [marginBottomLevel]
  * @property {string} [marginTopLevel]
  * @property {function} onClick

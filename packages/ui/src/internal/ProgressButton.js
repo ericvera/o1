@@ -40,7 +40,7 @@ function reducer(state, action) {
 }
 
 const ProgressButton = (
-  { children, className, delay, fullWidth, onClick, showProgress },
+  { autoFocus, children, className, delay, fullWidth, onClick, showProgress },
   ref
 ) => {
   const [state, dispatch] = useReducer(reducer, delay, init)
@@ -60,6 +60,7 @@ const ProgressButton = (
 
   return (
     <MaterialUIButton
+      autoFocus={autoFocus}
       type="submit"
       disabled={Boolean(state.delay) || showProgress}
       onClick={onClick}
