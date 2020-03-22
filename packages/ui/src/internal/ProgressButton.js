@@ -40,7 +40,17 @@ function reducer(state, action) {
 }
 
 const ProgressButton = (
-  { autoFocus, children, className, delay, fullWidth, onClick, showProgress },
+  {
+    autoFocus,
+    children,
+    className,
+    delay,
+    fullWidth,
+    href,
+    onClick,
+    showProgress,
+    target
+  },
   ref
 ) => {
   const [state, dispatch] = useReducer(reducer, delay, init)
@@ -66,6 +76,8 @@ const ProgressButton = (
       onClick={onClick}
       className={className}
       fullWidth={fullWidth}
+      href={href}
+      target={target}
     >
       {children}
       {state.delay ? ` (in ${state.delay} seconds)` : ''}

@@ -81,6 +81,11 @@ storiesOf('Button', module)
       Press me
     </Button>
   ))
+  .add('open in new tab with href/taget', () => (
+    <Button centered={false} href="//google.com" target="_blank">
+      Press me
+    </Button>
+  ))
   .add('secondary', () => (
     <Button color="secondary" onClick={action('button pressed')}>
       Press me

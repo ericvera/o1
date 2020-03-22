@@ -77,11 +77,13 @@ export const Button = ({
   delay,
   forwardedRef,
   fullWidth = false,
+  href,
   marginBottomLevel = SpacingLevel.l0,
   marginTopLevel = SpacingLevel.l0,
   onClick,
   size = ButtonSize.large,
   showProgress = false,
+  target,
   variant = ButtonVariant.flat
 }) => {
   const colors = useContext(ColorsContext)
@@ -102,8 +104,10 @@ export const Button = ({
           autoFocus={autoFocus}
           className={classNames.join(' ')}
           fullWidth={fullWidth}
+          href={href}
           onClick={onClick}
           size={size}
+          target={target}
         >
           {children}
         </MaterialUIButton>
@@ -118,7 +122,9 @@ export const Button = ({
           delay={delay}
           className={classNames.join(' ')}
           fullWidth={fullWidth}
+          href={href}
           onClick={onClick}
+          target={target}
           showProgress={showProgress}
         >
           {children}
@@ -136,9 +142,11 @@ export const Button = ({
             text: colorClassName
           }}
           fullWidth={fullWidth}
+          href={href}
           onClick={onClick}
           variant="text"
           size={size}
+          target={target}
         >
           {children}
         </MaterialUIButton>
@@ -163,10 +171,12 @@ Button.propTypes = exact({
   color: ColorPropTypes,
   forwardedRef: PropTypes.object,
   fullWidth: PropTypes.bool,
+  href: PropTypes.string,
   marginBottomLevel: SpacingLevelPropTypes,
   marginTopLevel: SpacingLevelPropTypes,
   onClick: PropTypes.func,
   size: ButtonSizePropTypes,
+  target: PropTypes.string,
   variant: ButtonVariantPropTypes,
   /** Delay in seconds before the button can be pressed */
   delay: PropTypes.number,
@@ -183,10 +193,12 @@ Button.propTypes = exact({
  * @property {number} [delay]
  * @property {React.Ref<any>} [forwardedRef]
  * @property {boolean} [fullWidth]
+ * @property {string} [href]
  * @property {'small'|'medium'|'large'|undefined} [size]
  * @property {string} [marginBottomLevel]
  * @property {string} [marginTopLevel]
- * @property {function} onClick
+ * @property {string} [target]
+ * @property {function} [onClick]
  * @property {string} [variant]
  * @property {React.Ref<any>} [ref]
  * @property {boolean} [showProgress]
