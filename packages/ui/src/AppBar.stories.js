@@ -14,6 +14,21 @@ import backgroundImage from '../.storybook/test-image.jpg'
 
 storiesOf('AppBar', module)
   .add('back', () => <AppBar variant="back" onClick={action('go back')} />)
+  .add('back w/ background color', () => (
+    <AppBar
+      variant="back"
+      backgroundColor="brand"
+      onClick={action('go back')}
+    />
+  ))
+  .add('back w/ middle immage', () => (
+    <AppBar
+      variant="close"
+      backgroundColor="transparent"
+      middleImage={<HomeIcon />}
+      onClick={action('go back')}
+    />
+  ))
   .add('close', () => <AppBar variant="close" onClick={action('close')} />)
   .add('drawer-menu', () => (
     <AppBar

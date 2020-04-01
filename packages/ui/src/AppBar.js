@@ -3,12 +3,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
 // Helpers
+import { AppBarButtonIcon } from './helpers/constants'
 import { AppBarVariantPropTypes, ColorPropTypes } from './helpers/PropTypes'
 // Components
+import { Button } from './Button'
 import AppBarButton from './internal/AppBarButton'
 import BaseAppBar from './internal/BaseAppBar'
 import BottomAppBar from './internal/BottomAppBar'
-import { Button } from './Button'
 import DialogMenuAppBar from './internal/DialogMenuAppBar'
 import DrawerMenuAppBar from './internal/DrawerMenuAppBar'
 
@@ -16,9 +17,13 @@ const AppBar = ({ variant, ...props }) => {
   switch (variant) {
     case 'back':
     case 'close':
+      const { backgroundColor, middleImage, ...otherProps } = props
+
       return (
-        <BaseAppBar location="top">
-          <AppBarButton side="left" icon={variant} {...props} />
+        <BaseAppBar location="top" backgroundColor={backgroundColor}>
+          <AppBarButton side="left" icon={variant} {...otherProps} />
+          {middleImage}
+          <AppBarButton side="right" icon={AppBarButtonIcon.empty} />
         </BaseAppBar>
       )
     case 'drawer-menu':
@@ -43,6 +48,7 @@ AppBar.propTypes = exact({
 
   /* back, close, bottom-full-button, bottom-text-button */
   onClick: PropTypes.func,
+  backgroundColor: ColorPropTypes,
 
   /* drawer-menu, dialog-menu */
   menuItems: PropTypes.arrayOf(itemPropType),
