@@ -2,6 +2,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import exact from 'prop-types-exact'
+// Material-UI
+import { makeStyles } from '@material-ui/styles'
 // Helpers
 import { AppBarButtonIcon } from './helpers/constants'
 import { AppBarVariantPropTypes, ColorPropTypes } from './helpers/PropTypes'
@@ -13,7 +15,26 @@ import BottomAppBar from './internal/BottomAppBar'
 import DialogMenuAppBar from './internal/DialogMenuAppBar'
 import DrawerMenuAppBar from './internal/DrawerMenuAppBar'
 
+const useStyles = makeStyles({
+  all: {
+    display: 'flex',
+    flex: '1 1 auto',
+    alignItems: 'center',
+  },
+  left: {
+    justifyContent: 'flex-start',
+  },
+  middle: {
+    justifyContent: 'center',
+  },
+  right: {
+    justifyContent: 'flex-end',
+  },
+})
+
 const AppBar = ({ variant, ...props }) => {
+  const classes = useStyles({})
+
   switch (variant) {
     case 'back':
     case 'close':
@@ -21,11 +42,20 @@ const AppBar = ({ variant, ...props }) => {
 
       return (
         <BaseAppBar location="top" backgroundColor={backgroundColor}>
-          <AppBarButton side="left" icon={variant} {...otherProps} />
-          {middleImage}
-          {rightImage || (
-            <AppBarButton side="right" icon={AppBarButtonIcon.empty} />
-          )}
+          <div className={[classes.left, classes.all].join(' ')}>
+            <AppBarButton side="left" icon={variant} {...otherProps} />
+          </div>
+          {middleImage ? (
+            <div className={[classes.middle, classes.all].join(' ')}>
+              {middleImage}
+            </div>
+          ) : null}
+
+          <div className={[classes.right, classes.all].join(' ')}>
+            {rightImage || (
+              <AppBarButton side="right" icon={AppBarButtonIcon.empty} />
+            )}
+          </div>
         </BaseAppBar>
       )
     case 'drawer-menu':

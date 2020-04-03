@@ -22,7 +22,7 @@ storiesOf('AppBar', module)
       onClick={action('go back')}
     />
   ))
-  .add('back w/ middle immage', () => (
+  .add('back w/ middle image', () => (
     <AppBar
       variant="close"
       backgroundColor="transparent"
@@ -34,7 +34,11 @@ storiesOf('AppBar', module)
     <AppBar
       variant="close"
       backgroundColor="transparent"
-      middleImage={<HomeIcon />}
+      middleImage={
+        <>
+          <HomeIcon /> Logo Copy
+        </>
+      }
       rightImage={<AppBarButton side="right" icon={<HomeIcon />} />}
       onClick={action('go back')}
     />
