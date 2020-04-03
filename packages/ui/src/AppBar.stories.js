@@ -6,6 +6,7 @@ import { storiesOf } from '@storybook/react'
 import HomeIcon from '@material-ui/icons/Home'
 // Components
 import AppBar from './AppBar'
+import AppBarButton from './AppBarButton'
 import Container from './Container'
 import Heading from './Heading'
 import Text from './Text'
@@ -29,6 +30,15 @@ storiesOf('AppBar', module)
       onClick={action('go back')}
     />
   ))
+  .add('back w/ middle & right immage', () => (
+    <AppBar
+      variant="close"
+      backgroundColor="transparent"
+      middleImage={<HomeIcon />}
+      rightImage={<AppBarButton side="right" icon={<HomeIcon />} />}
+      onClick={action('go back')}
+    />
+  ))
   .add('close', () => <AppBar variant="close" onClick={action('close')} />)
   .add('drawer-menu', () => (
     <AppBar
@@ -38,20 +48,20 @@ storiesOf('AppBar', module)
       menuItems={[
         {
           text: 'Menu item 1',
-          onClick: action('menu item 1 pressed')
+          onClick: action('menu item 1 pressed'),
         },
         {
           text: 'Menu item 2',
-          onClick: action('menu item 2 pressed')
-        }
+          onClick: action('menu item 2 pressed'),
+        },
       ]}
       bottomLeftMenuItem={{
         text: 'Left',
-        onClick: action('bottom left item')
+        onClick: action('bottom left item'),
       }}
       bottomRightMenuItem={{
         text: 'Right',
-        onClick: action('bottom right item')
+        onClick: action('bottom right item'),
       }}
     />
   ))
@@ -66,12 +76,12 @@ storiesOf('AppBar', module)
         menuItems={[
           {
             text: 'Menu item 1',
-            onClick: action('menu item 1 pressed')
+            onClick: action('menu item 1 pressed'),
           },
           {
             text: 'Menu item 2',
-            onClick: action('menu item 2 pressed')
-          }
+            onClick: action('menu item 2 pressed'),
+          },
         ]}
       />
       <Container backgroundImage={backgroundImage}>

@@ -8,19 +8,19 @@ import CloseIcon from '@material-ui/icons/Close'
 import MaterialUIIconButton from '@material-ui/core/IconButton'
 import { makeStyles } from '@material-ui/styles'
 // Internal
-import EmptyIcon from './EmptyIcon'
-import MenuMinimalIcon from './MenuMinimalIcon'
-import { ColorsContext } from './ColorsContext'
+import EmptyIcon from './internal/EmptyIcon'
+import MenuMinimalIcon from './internal/MenuMinimalIcon'
+import { ColorsContext } from './internal/ColorsContext'
 // Helpers
-import { AppBarButtonIcon, Color } from '../helpers/constants'
-import { AppBarButtonIconPropTypes, ColorPropTypes } from '../helpers/PropTypes'
+import { AppBarButtonIcon, Color } from './helpers/constants'
+import { AppBarButtonIconPropTypes, ColorPropTypes } from './helpers/PropTypes'
 // Hooks
-import useColorClassName from '../hooks/useColorClassName'
+import useColorClassName from './hooks/useColorClassName'
 
 // TODO: Figure out if there are constants for these numbers somewhere? or make a note explaining
 const useStyles = makeStyles({
   left: { marginLeft: -12, marginRight: 20 },
-  right: { marginLeft: 20, marginRight: -12 }
+  right: { marginLeft: 20, marginRight: -12 },
 })
 
 const AppBarButton = ({ color = Color.primary, icon, onClick, side }) => {
@@ -59,7 +59,7 @@ AppBarButton.propTypes = exact({
   color: ColorPropTypes,
   icon: PropTypes.oneOfType([PropTypes.element, AppBarButtonIconPropTypes]),
   onClick: PropTypes.func,
-  side: PropTypes.oneOf(['left', 'right'])
+  side: PropTypes.oneOf(['left', 'right']),
 })
 
 export default AppBarButton

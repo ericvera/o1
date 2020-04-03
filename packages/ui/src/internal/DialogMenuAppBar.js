@@ -14,7 +14,7 @@ import { makeStyles } from '@material-ui/styles'
 // Public
 import Button from '../Button'
 // Internal
-import AppBarButton from './AppBarButton'
+import AppBarButton from '../AppBarButton'
 import BaseAppBar from './BaseAppBar'
 import Container from '../Container'
 import { ColorsContext } from './ColorsContext'

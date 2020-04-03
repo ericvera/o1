@@ -7,7 +7,7 @@ import { AppBarButtonIcon } from './helpers/constants'
 import { AppBarVariantPropTypes, ColorPropTypes } from './helpers/PropTypes'
 // Components
 import { Button } from './Button'
-import AppBarButton from './internal/AppBarButton'
+import AppBarButton from './AppBarButton'
 import BaseAppBar from './internal/BaseAppBar'
 import BottomAppBar from './internal/BottomAppBar'
 import DialogMenuAppBar from './internal/DialogMenuAppBar'
@@ -17,13 +17,15 @@ const AppBar = ({ variant, ...props }) => {
   switch (variant) {
     case 'back':
     case 'close':
-      const { backgroundColor, middleImage, ...otherProps } = props
+      const { backgroundColor, middleImage, rightImage, ...otherProps } = props
 
       return (
         <BaseAppBar location="top" backgroundColor={backgroundColor}>
           <AppBarButton side="left" icon={variant} {...otherProps} />
           {middleImage}
-          <AppBarButton side="right" icon={AppBarButtonIcon.empty} />
+          {rightImage || (
+            <AppBarButton side="right" icon={AppBarButtonIcon.empty} />
+          )}
         </BaseAppBar>
       )
     case 'drawer-menu':
@@ -40,7 +42,7 @@ const AppBar = ({ variant, ...props }) => {
 
 const itemPropType = PropTypes.shape({
   text: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 })
 
 AppBar.propTypes = exact({
@@ -49,6 +51,7 @@ AppBar.propTypes = exact({
   /* back, close, bottom-full-button, bottom-text-button */
   onClick: PropTypes.func,
   backgroundColor: ColorPropTypes,
+  rightImage: PropTypes.element,
 
   /* drawer-menu, dialog-menu */
   menuItems: PropTypes.arrayOf(itemPropType),
@@ -81,7 +84,7 @@ AppBar.propTypes = exact({
 
   /* bottom-text-button, bottom-full-button */
   buttonColor: PropTypes.string,
-  buttonText: PropTypes.string
+  buttonText: PropTypes.string,
 })
 
 export default AppBar

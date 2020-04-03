@@ -1,4 +1,5 @@
 import AppBar from './AppBar'
+import AppBarButton from './AppBarButton'
 import Button from './Button'
 import { Color, HeadingLevel, SpacingLevel } from './helpers/constants'
 import Container from './Container'
@@ -25,6 +26,7 @@ import { makeStyles } from '@material-ui/styles'
 export {
   makeStyles,
   AppBar,
+  AppBarButton,
   Button,
   Color,
   Container,
@@ -46,5 +48,5 @@ export {
   Switch,
   Text,
   TextField,
-  ThemeProvider
+  ThemeProvider,
 }

@@ -9,7 +9,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
 import { makeStyles } from '@material-ui/styles'
 // Internal
-import AppBarButton from './AppBarButton'
+import AppBarButton from '../AppBarButton'
 import BaseAppBar from './BaseAppBar'
 import InnerContainer from './InnerContainer'
 // Helpers
