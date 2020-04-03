@@ -17,6 +17,7 @@ import DrawerMenuAppBar from './internal/DrawerMenuAppBar'
 
 const useStyles = makeStyles({
   all: {
+    width: '33.3333%',
     display: 'flex',
     flex: '1 1 auto',
     alignItems: 'center',
