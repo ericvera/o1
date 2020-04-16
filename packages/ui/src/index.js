@@ -18,6 +18,9 @@ import Switch from './Switch'
 import Text from './Text'
 import TextField from './TextField'
 import ThemeProvider from './ThemeProvider'
+// Hooks
+import useMarginStyles from './hooks/useMarginStyles'
+import usePaddingStyles from './hooks/usePaddingStyles'
 // Export directly from Material-UI
 import * as MaterialUI from '@material-ui/core'
 import * as MaterialUIIcons from '@material-ui/icons'
@@ -49,4 +52,6 @@ export {
   Text,
   TextField,
   ThemeProvider,
+  useMarginStyles,
+  usePaddingStyles,
 }
