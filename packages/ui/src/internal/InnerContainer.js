@@ -13,20 +13,24 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: '100%'
-  }
+    width: '100%',
+  },
 })
 
 const InnerContainer = ({
   centered = true,
   flex = false,
   disableGutters = false,
-  children
+  children,
 }) => {
   const guttersClassName = useGutterStyles(disableGutters)
   const classes = useStyles()
 
   const flexClassName = flex ? classes.container : ''
+
+  if (!centered && !guttersClassName && !flexClassName) {
+    return children
+  }
 
   if (!centered) {
     return (
@@ -54,7 +58,7 @@ InnerContainer.propTypes = exact({
   centered: PropTypes.bool,
   flex: PropTypes.bool,
   disableGutters: PropTypes.bool,
-  children: PropTypes.node
+  children: PropTypes.node,
 })
 
 export default InnerContainer
