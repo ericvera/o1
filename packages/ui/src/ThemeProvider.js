@@ -309,17 +309,19 @@ const theme = (colors, fontFamily = defaultFontFamily, fontSizeBase = 16) =>
     },
   })
 
-const ThemeProvider = ({ children, colors, fontFamily }) => (
+const ThemeProvider = ({ children, colors, fontFamily, fontSizeBase }) => (
   <ColorsContext.Provider value={Object.assign({}, defaultColorValues, colors)}>
-    <ThemeProviderBase fontFamily={fontFamily}>{children}</ThemeProviderBase>
+    <ThemeProviderBase fontFamily={fontFamily} fontSizeBase={fontSizeBase}>
+      {children}
+    </ThemeProviderBase>
   </ColorsContext.Provider>
 )
 
-const ThemeProviderBase = ({ children, fontFamily }) => {
+const ThemeProviderBase = ({ children, fontFamily, fontSizeBase }) => {
   const colors = useContext(ColorsContext)
 
   return (
-    <MaterialUIThemeProvider theme={theme(colors, fontFamily)}>
+    <MaterialUIThemeProvider theme={theme(colors, fontFamily, fontSizeBase)}>
       <CssBaseline />
       {children}
     </MaterialUIThemeProvider>
@@ -330,6 +332,7 @@ ThemeProvider.propTypes = exact({
   children: PropTypes.node,
   colors: PropTypes.object,
   fontFamily: PropTypes.arrayOf(PropTypes.string),
+  fontSizeBase: PropTypes.number,
 })
 
 export default ThemeProvider
