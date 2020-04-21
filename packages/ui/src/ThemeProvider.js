@@ -254,6 +254,20 @@ const theme = (colors, fontFamily = defaultFontFamily, fontSizeBase = 16) =>
           fontSize: getFontSize(FontSizeLevel.l2, fontSizeBase),
         },
       },
+      MuiSvgIcon: {
+        colorPrimary: {
+          color: getColor(colors, Color.primary),
+        },
+        colorAction: {
+          color: getColor(colors, Color.confirmAction),
+        },
+        colorSecondary: {
+          color: getColor(colors, Color.secondary),
+        },
+        colorError: {
+          color: getColor(colors, Color.confirmAction),
+        },
+      },
       MuiSwitch: {
         root: {
           marginRight: -8,
