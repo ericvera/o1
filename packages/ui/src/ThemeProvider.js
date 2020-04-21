@@ -42,7 +42,7 @@ const shadowLevels = [
   'none',
   'none',
   'none',
-  'none'
+  'none',
 ]
 
 const defaultFontFamily = [
@@ -56,10 +56,10 @@ const defaultFontFamily = [
   'sans-serif',
   '"Apple Color Emoji"',
   '"Segoe UI Emoji"',
-  '"Segoe UI Symbol"'
+  '"Segoe UI Symbol"',
 ]
 
-const theme = (colors, fontFamily = defaultFontFamily) =>
+const theme = (colors, fontFamily = defaultFontFamily, fontSizeBase = 16) =>
   createMuiTheme({
     // NOTE: shadows uses 25 levels of shadows. Setting
     //  them all to avoid the warning and disable them all.
@@ -67,58 +67,58 @@ const theme = (colors, fontFamily = defaultFontFamily) =>
     props: {
       MuiAppBar: {
         position: 'fixed',
-        elevation: 0
+        elevation: 0,
       },
       MuiButtonBase: {
         disableRipple: true,
-        disableTouchRipple: true
+        disableTouchRipple: true,
       },
       MuiButton: {
         variant: 'contained',
         disableFocusRipple: true,
-        disableTouchRipple: true
+        disableTouchRipple: true,
       },
       MuiIconButton: {
         disableRipple: true,
-        disableTouchRipple: true
+        disableTouchRipple: true,
       },
       MuiInput: {
         disableUnderline: true,
-        fullWidth: true
+        fullWidth: true,
       },
       MuiInputLabel: {
         shrink: true,
         disableAnimation: true,
-        focused: false
+        focused: false,
       },
       MuiListItem: {
-        disableGutters: true
+        disableGutters: true,
       },
       MuiListItemText: {
         primaryTypographyProps: {
-          variant: 'body1'
-        }
+          variant: 'body1',
+        },
       },
       MuiMenu: {
-        elevation: 0
+        elevation: 0,
       },
       MuiPaper: {
-        elevation: 0
-      }
+        elevation: 0,
+      },
     },
     overrides: {
       MuiAppBar: {
-        colorPrimary: { backgroundColor: getColor(colors, Color.background) }
+        colorPrimary: { backgroundColor: getColor(colors, Color.background) },
       },
       MuiButtonBase: {
         root: {
           '&:hover': {
-            backgroundColor: getColor(colors, Color.transparent)
+            backgroundColor: getColor(colors, Color.transparent),
           },
           '&$disabled': {
-            backgroundColor: getColor(colors, Color.transparent)
-          }
-        }
+            backgroundColor: getColor(colors, Color.transparent),
+          },
+        },
       },
       MuiButton: {
         text: {
@@ -126,12 +126,12 @@ const theme = (colors, fontFamily = defaultFontFamily) =>
           color: getColor(colors, Color.primary),
           fontWeight: getFontWeight(FontWeight.bold),
           '&:hover': {
-            backgroundColor: getColor(colors, Color.transparent)
+            backgroundColor: getColor(colors, Color.transparent),
           },
           '&$disabled': {
             color: getColor(colors, Color.primaryDisabled),
-            backgroundColor: getColor(colors, Color.transparent)
-          }
+            backgroundColor: getColor(colors, Color.transparent),
+          },
         },
         contained: {
           backgroundColor: getColor(colors, Color.background),
@@ -141,12 +141,12 @@ const theme = (colors, fontFamily = defaultFontFamily) =>
           color: getColor(colors, Color.brand),
           //fontWeight: getFontWeight(FontWeight.regular),
           '&:hover': {
-            backgroundColor: getColor(colors, Color.background)
+            backgroundColor: getColor(colors, Color.background),
           },
           '&$disabled': {
             color: getColor(colors, Color.primaryDisabled),
-            backgroundColor: getColor(colors, Color.background)
-          }
+            backgroundColor: getColor(colors, Color.background),
+          },
         },
         /*fab: {
         // Between the mobile stepper and the AppBar
@@ -159,44 +159,44 @@ const theme = (colors, fontFamily = defaultFontFamily) =>
         right: 16
       },*/
         label: {
-          textTransform: 'none'
-        }
+          textTransform: 'none',
+        },
       },
       MuiCircularProgress: {
         colorPrimary: {
-          color: getColor(colors, Color.brand)
-        }
+          color: getColor(colors, Color.brand),
+        },
       },
       MuiDivider: {
         root: {
-          backgroundColor: getColor(colors, Color.secondary)
-        }
+          backgroundColor: getColor(colors, Color.secondary),
+        },
       },
       MuiFormControl: {
         root: {
-          display: 'block'
-        }
+          display: 'block',
+        },
       },
       MuiFormHelperText: {
         root: {
           color: getColor(colors, Color.confirmAction),
-          fontSize: getFontSize(FontSizeLevel.l1),
+          fontSize: getFontSize(FontSizeLevel.l1, fontSizeBase),
           lineHeight: 1.3,
-          marginTop: 0
-        }
+          marginTop: 0,
+        },
       },
       MuiFormLabel: {
         root: {
-          color: getColor(colors, Color.primary)
-        }
+          color: getColor(colors, Color.primary),
+        },
       },
       MuiIconButton: {
         root: {
           color: getColor(colors, Color.primary),
           '&:hover': {
-            backgroundColor: getColor(colors, Color.transparent)
-          }
-        }
+            backgroundColor: getColor(colors, Color.transparent),
+          },
+        },
       },
       MuiInput: {
         root: {
@@ -205,108 +205,108 @@ const theme = (colors, fontFamily = defaultFontFamily) =>
           backgroundColor: getColor(colors, Color.inputBackground),
           '&$disabled': {
             color: getColor(colors, Color.inputTextDisabled),
-            backgroundColor: getColor(colors, Color.inputBackgroundDisabled)
-          }
-        }
+            backgroundColor: getColor(colors, Color.inputBackgroundDisabled),
+          },
+        },
       },
       MuiInputBase: {
         input: {
           borderStyle: 'none',
-          padding: getFontSize(FontSizeLevel.l2)
+          padding: getFontSize(FontSizeLevel.l2, fontSizeBase),
         },
         multiline: {
-          padding: getFontSize(FontSizeLevel.l2)
-        }
+          padding: getFontSize(FontSizeLevel.l2, fontSizeBase),
+        },
       },
       MuiInputLabel: {
         root: {
-          fontWeight: getFontWeight(FontWeight.bold)
-        }
+          fontWeight: getFontWeight(FontWeight.bold),
+        },
       },
       MuiListItem: {
         button: {
           '&:hover': {
-            backgroundColor: getColor(colors, Color.transparent)
+            backgroundColor: getColor(colors, Color.transparent),
           },
           '&:focus': {
-            backgroundColor: getColor(colors, Color.transparent)
+            backgroundColor: getColor(colors, Color.transparent),
           },
           '&$disabled': {
-            backgroundColor: getColor(colors, Color.transparent)
-          }
-        }
+            backgroundColor: getColor(colors, Color.transparent),
+          },
+        },
       },
       MuiListItemText: {
         root: {
-          whiteSpace: 'pre-wrap'
+          whiteSpace: 'pre-wrap',
         },
         primary: {
-          overflowWrap: 'break-word'
+          overflowWrap: 'break-word',
         },
         secondary: {
-          overflowWrap: 'break-word'
-        }
+          overflowWrap: 'break-word',
+        },
       },
       MuiSnackbarContent: {
         root: {
           backgroundColor: getColor(colors, Color.brand),
           color: getColor(colors, Color.background),
-          fontSize: getFontSize(FontSizeLevel.l2)
-        }
+          fontSize: getFontSize(FontSizeLevel.l2, fontSizeBase),
+        },
       },
       MuiSwitch: {
         root: {
-          marginRight: -8
-        }
+          marginRight: -8,
+        },
       },
       MuiTypography: {
         root: {
-          overflowWrap: 'break-word'
-        }
-      }
+          overflowWrap: 'break-word',
+        },
+      },
     },
     palette: {
       background: {
         paper: getColor(colors, Color.background),
-        default: getColor(colors, Color.background)
-      }
+        default: getColor(colors, Color.background),
+      },
     },
     typography: {
       fontFamily: fontFamily.join(','),
       h1: {
-        fontSize: getFontSize(FontSizeLevel.l4),
+        fontSize: getFontSize(FontSizeLevel.l4, fontSizeBase),
         color: getColor(colors, Color.primary),
         fontWeight: getFontWeight(FontWeight.bold),
-        lineHeight: 1.1429
+        lineHeight: 1.1429,
       },
       h2: {
-        fontSize: getFontSize(FontSizeLevel.l3),
+        fontSize: getFontSize(FontSizeLevel.l3, fontSizeBase),
         color: getColor(colors, Color.primary),
         fontWeight: getFontWeight(FontWeight.bold),
-        lineHeight: 1.23
+        lineHeight: 1.23,
       },
       h3: {
-        fontSize: getFontSize(FontSizeLevel.l2),
+        fontSize: getFontSize(FontSizeLevel.l2, fontSizeBase),
         color: getColor(colors, Color.primary),
         fontWeight: getFontWeight(FontWeight.bold),
-        lineHeight: 1.1875
+        lineHeight: 1.1875,
       },
       body1: {
-        fontSize: getFontSize(FontSizeLevel.l2),
+        fontSize: getFontSize(FontSizeLevel.l2, fontSizeBase),
         color: getColor(colors, Color.primary),
-        lineHeight: 1.1875
+        lineHeight: 1.1875,
       },
       body2: {
-        fontSize: getFontSize(FontSizeLevel.l1),
+        fontSize: getFontSize(FontSizeLevel.l1, fontSizeBase),
         color: getColor(colors, Color.secondary),
-        lineHeight: 1.3
+        lineHeight: 1.3,
       },
       button: {
-        fontWeight: getFontWeight(FontWeight.regular)
+        fontWeight: getFontWeight(FontWeight.regular),
       },
       fontWeightRegular: getFontWeight(FontWeight.regular),
-      fontWeightMedium: getFontWeight(FontWeight.bold)
-    }
+      fontWeightMedium: getFontWeight(FontWeight.bold),
+    },
   })
 
 const ThemeProvider = ({ children, colors, fontFamily }) => (
@@ -329,7 +329,7 @@ const ThemeProviderBase = ({ children, fontFamily }) => {
 ThemeProvider.propTypes = exact({
   children: PropTypes.node,
   colors: PropTypes.object,
-  fontFamily: PropTypes.arrayOf(PropTypes.string)
+  fontFamily: PropTypes.arrayOf(PropTypes.string),
 })
 
 export default ThemeProvider
