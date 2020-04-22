@@ -121,6 +121,9 @@ const theme = (colors, fontFamily = defaultFontFamily, fontSizeBase = 16) =>
         },
       },
       MuiButton: {
+        root: {
+          color: getColor(colors, Color.primary),
+        },
         text: {
           borderWidth: 0,
           color: getColor(colors, Color.primary),
@@ -213,6 +216,7 @@ const theme = (colors, fontFamily = defaultFontFamily, fontSizeBase = 16) =>
         input: {
           borderStyle: 'none',
           padding: getFontSize(FontSizeLevel.l2, fontSizeBase),
+          color: getColor(colors, Color.inputText),
         },
         multiline: {
           padding: getFontSize(FontSizeLevel.l2, fontSizeBase),
@@ -283,6 +287,12 @@ const theme = (colors, fontFamily = defaultFontFamily, fontSizeBase = 16) =>
       background: {
         paper: getColor(colors, Color.background),
         default: getColor(colors, Color.background),
+      },
+      primary: {
+        main: getColor(colors, Color.primary),
+      },
+      secondary: {
+        main: getColor(colors, Color.secondary),
       },
     },
     typography: {
