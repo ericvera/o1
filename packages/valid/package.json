@@ -1,6 +1,6 @@
 {
   "name": "@o1/valid",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "Opinionated data validation (with yup)",
   "main": "index.js",
   "module": "index.js",

@@ -1,6 +1,6 @@
 {
   "name": "@o1/auth",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "description": "Lightweight helper for Firebase Auth Web ",
   "main": "index.js",
   "author": "Eric Vera <eric.vera+code@gmail.com>",
