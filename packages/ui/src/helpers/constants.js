@@ -4,26 +4,27 @@ export const AppBarVariant = {
   drawerMenu: 'drawer-menu',
   dialodMenu: 'dialog-menu',
   bottomFullButton: 'bottom-full-button',
-  bottomTextButton: 'bottom-text-button'
+  bottomTextButton: 'bottom-text-button',
 }
 
 export const AppBarButtonIcon = {
   back: 'back',
   close: 'close',
   menu: 'menu',
-  empty: 'empty'
+  empty: 'empty',
 }
 
 export const ButtonVariant = {
   flat: 'flat',
   progress: 'progress',
-  text: 'text'
+  text: 'text',
 }
 
+// TODO: Remove this comment
 export const ButtonSize = {
   small: 'small',
   medium: 'medium',
-  large: 'large'
+  large: 'large',
 }
 
 export const Color = {
@@ -38,31 +39,31 @@ export const Color = {
   inputBackgroundDisabled: 'input-background-disabled',
   inputTextDisabled: 'input-text-disabled',
   background: 'background',
-  transparent: 'transparent'
+  transparent: 'transparent',
 }
 
 export const FontSizeLevel = {
   l1: 'l1',
   l2: 'l2',
   l3: 'l3',
-  l4: 'l4'
+  l4: 'l4',
 }
 
 export const FontWeight = {
   bold: 'bold',
-  regular: 'regular'
+  regular: 'regular',
 }
 
 export const HeadingLevel = {
   l1: 'l1',
   l2: 'l2',
-  l3: 'l3'
+  l3: 'l3',
 }
 
 export const ScreenSize = {
   all: 'all',
   notSmall: 'not-small',
-  small: 'small'
+  small: 'small',
 }
 
 export const SpacingLevel = {
@@ -75,11 +76,11 @@ export const SpacingLevel = {
   l6: 'l6',
   l7: 'l7',
   l8: 'l8',
-  l9: 'l9'
+  l9: 'l9',
 }
 
 export const TextVariant = {
   body: 'body',
   subText: 'sub-text',
-  error: 'error'
+  error: 'error',
 }
