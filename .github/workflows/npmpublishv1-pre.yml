@@ -33,7 +33,7 @@ jobs:
           git config --global user.email octobot@github.com
           git config --global user.name GitHub Actions
       - run: git diff
-      - run: yarn patch
+      - run: yarn patchpre
       - run: yarn publish-all
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
