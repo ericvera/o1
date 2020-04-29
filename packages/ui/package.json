@@ -27,6 +27,9 @@
     "react"
   ],
   "peerDependencies": {
+    "@material-ui/core": "~4",
+    "@material-ui/icons": "~4",
+    "@material-ui/styles": "~4",
     "react": "~16",
     "react-dom": "~16"
   },
@@ -34,9 +37,6 @@
     "@babel/cli": "~7.8.4",
     "@babel/core": "~7.8.4",
     "@babel/preset-react": "~7.8.3",
-    "@material-ui/core": "^4.9.0",
-    "@material-ui/icons": "^4.5.1",
-    "@material-ui/styles": "^4.9.0",
     "babel-loader": "~8",
     "babel-plugin-require-context-hook": "~1",
     "babel-plugin-transform-es2015-modules-commonjs": "~6",
