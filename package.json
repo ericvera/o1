@@ -9,7 +9,7 @@
     "bootstrap-production": "lerna bootstrap -- --production",
     "test": "lerna run test",
     "patch": "lerna version patch --yes",
-    "patchpre": "lerna version prepatch --yes",
+    "patchpre": "lerna version prerelease --yes",
     "publish-all": "lerna publish from-package --yes"
   },
   "version": "0.0.1",
