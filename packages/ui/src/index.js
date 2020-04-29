@@ -21,13 +21,8 @@ import ThemeProvider from './ThemeProvider'
 // Hooks
 import useMarginStyles from './hooks/useMarginStyles'
 import usePaddingStyles from './hooks/usePaddingStyles'
-// Export directly from Material-UI
-import * as MaterialUI from '@material-ui/core'
-import * as MaterialUIIcons from '@material-ui/icons'
-import { makeStyles } from '@material-ui/styles'
 
 export {
-  makeStyles,
   AppBar,
   AppBarButton,
   Button,
@@ -41,8 +36,6 @@ export {
   HeadingLevel,
   List,
   ListItem,
-  MaterialUI,
-  MaterialUIIcons,
   Progress,
   Select,
   Snackbar,
