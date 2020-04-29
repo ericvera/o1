@@ -20,7 +20,6 @@ export const ButtonVariant = {
   text: 'text',
 }
 
-// TODO: Remove this comment
 export const ButtonSize = {
   small: 'small',
   medium: 'medium',

@@ -1,0 +1,39 @@
+name: Node.js Package
+
+on:
+  push:
+    branches:
+      - v1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - run: yarn --frozen-lockfile
+      - run: yarn bootstrap
+      - run: yarn test
+
+  publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: yarn --frozen-lockfile
+      - run: yarn bootstrap-production
+      - name: Configure CI Git User
+        run: |
+          git config --global user.email octobot@github.com
+          git config --global user.name GitHub Actions
+      - run: git diff
+      - run: yarn patch
+      - run: yarn publish-all
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
